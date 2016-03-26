@@ -7,18 +7,18 @@ use Com\WechatAuth;
 class WeixinController extends HomeController {
 
 	public function index() {
-		if (IS_POST) {
 			$token = 'yumiazusa'; //微信后台填写的TOKEN
+			$appid=$this->appid();
+		    $secret=$this->secret();
 			/* 加载微信SDK */
 			$wechat = new Wechat($token);
-			$access_token['access_token'] = A('Ask/Api')->getAccessToken();
-			$WechatAuth = new WechatAuth(C('APPID'), C('APPSECRET'), $access_token['access_token']);
+			$access_token['access_token']=$Token=A('Api')->getAccessToken();
+			$WechatAuth = new WechatAuth($appid, $secret, $access_token['access_token']);
 			/* 获取请求信息 */
 			$data = $wechat->request();
-			$Wx_hdkc_user = M('wx_hdkc_user');
+
 			$access_token['openid'] = $data['FromUserName'];
-			$Wx_hdkc_user = M('wx_hdkc_user');
-			$Wx_user_fans = M('user_fans');
+
 			if ($data['Event'] == 'subscribe') {
 
 
@@ -37,7 +37,16 @@ class WeixinController extends HomeController {
 				
 
 			}
-		}
+	}
+
+	private function appid(){
+		$appid='wx37e5d97cd5c7ec90';
+		return $appid;
+	}
+
+	private function secret(){
+		$secret='c87aff3db0bef3794313a903e166290c';
+		return $secret;
 	}
 
 }
