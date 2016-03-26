@@ -14,6 +14,9 @@ class IndexController extends HomeController {
 
 	//系统首页
     public function index(){
+    	$Token=A('Api')->getAccessToken();
+    	dump($Token);
+    	die;
         $this->display();
     }
 
