@@ -39,7 +39,7 @@ class IndexController extends HomeController {
 		$WechatAuth = new WechatAuth($appid, $secret, $Token["access_token"]);
 		$userimg = './1.jpg';
 	    $type = 'image';
-		$media = $WechatAuth->mediaUpload($userimg,$type);
+		$media = $WechatAuth->metarialUpload($userimg,$type);
 		dump($media);
 		die;
 		$res=json_decode($media);
