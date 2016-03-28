@@ -20,7 +20,7 @@ class WeixinController extends HomeController {
 			$access_token['openid'] = $data['FromUserName'];
 
 			if ($data['Event'] == 'subscribe') {
-
+				$response="亲！服务号正在升级开发中，敬请期待~";
 
 			} else if ($data['Event'] == 'unsubscribe') {
 				
