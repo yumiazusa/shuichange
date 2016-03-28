@@ -200,8 +200,7 @@ class WechatAuth {
         
         $file = array('media' => "@{$filename}");
         $url  = "{$this->mediaURL}/material/add_material";
-        dump($url);
-        die;
+
         $data = self::http($url, $param, $file, 'POST');
 
         return json_decode($data, true);
