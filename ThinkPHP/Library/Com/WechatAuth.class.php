@@ -55,7 +55,7 @@ class WechatAuth {
      * 微信媒体文件根路径
      * @var string
      */
-    private $mediaURL  = 'http://file.api.weixin.qq.com/cgi-bin';
+    private $mediaURL  = 'http://api.weixin.qq.com/cgi-bin';
 
     /**
      * 微信二维码根路径
