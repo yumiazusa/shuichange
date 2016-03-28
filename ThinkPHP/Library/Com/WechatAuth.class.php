@@ -512,7 +512,8 @@ class WechatAuth {
             });
             $data = urldecode(json_encode($data));
         }
-
+        // dump($data);
+        // die;
         $data = self::http($url, $params, $data, $method);
 
         return json_decode($data, true);

@@ -40,8 +40,6 @@ class IndexController extends HomeController {
 		$userimg = './1.jpg';
 	    $type = 'image';
 		$media = $WechatAuth->materialUpload($userimg,$type);
-		dump($media);
-		die;
 		$res=json_decode($media);
 		dump($res);
 		die;
@@ -74,6 +72,15 @@ class IndexController extends HomeController {
 		return $res;
     }
 
+    public function getMenu(){
+    	$appid=C('WEI_APPID');
+		$secret=C('WEI_SECRET');
+		$Token=A('Api')->getAccessToken();
+		$WechatAuth = new WechatAuth($appid, $secret, $Token["access_token"]);
+		$menu=$WechatAuth->menuGet();
+		dump($menu);
+		die;
+    }
 
 
 
