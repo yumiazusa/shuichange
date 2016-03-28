@@ -33,6 +33,7 @@ class WeixinController extends HomeController {
 			
 			}
 			if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
+				$response="亲！服务号正在升级开发中，敬请期待~";
 			}
 			$test_str = "亲！服务号正在升级开发中，敬请期待~";
 			$index_response = $test_str;
