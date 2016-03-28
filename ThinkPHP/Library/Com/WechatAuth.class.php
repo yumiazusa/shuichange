@@ -176,8 +176,12 @@ class WechatAuth {
 
         $filename = realpath($filename);
         if(!$filename) throw new \Exception('资源路径错误！');
-        
-        $file = array('media' => "@{$filename}");
+        if (class_exists('\CURLFile')) {
+            $file = array('media' => new \CURLFile($filename));
+        } else {
+            $file = array('media' => "@{$filename}");
+        }
+        // $file = array('media' => "@{$filename}");
         $url  = "{$this->mediaURL}/media/upload";
         $data = self::http($url, $param, $file, 'POST');
 
@@ -197,8 +201,12 @@ class WechatAuth {
 
         $filename = realpath($filename);
         if(!$filename) throw new \Exception('资源路径错误！');
-        
-        $file = array('media' => "@{$filename}");
+        if (class_exists('\CURLFile')) {
+            $file = array('media' => new \CURLFile($filename));
+        } else {
+            $file = array('media' => "@{$filename}");
+        }
+
         $url  = "{$this->mediaURL}/material/add_material";
 
         $data = self::http($url, $param, $file, 'POST');
