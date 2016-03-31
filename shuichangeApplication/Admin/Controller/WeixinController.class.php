@@ -274,6 +274,9 @@ class WeixinController extends AdminController {
    			$new=M('news')->group('media_id')->select();
    			$news=count($new);
    			$count=$this->totalStuff();
+   			dump($news);
+   			dump($count);
+   			die;
    			if($count['news_count']>$news){
    				$offset=$count['news_count']-$news;
    				echo $offset;
