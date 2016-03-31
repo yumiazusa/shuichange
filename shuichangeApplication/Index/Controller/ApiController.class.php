@@ -4,7 +4,7 @@ namespace Index\Controller;
 class ApiController extends HomeController {
 
 	public function getAccessToken(){
-		S('Token',null);
+		// S('Token',null);
 		$Token = array();
 		if (S('Token')) {
 			$Token = S('Token');
