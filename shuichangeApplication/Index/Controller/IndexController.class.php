@@ -16,101 +16,39 @@ class IndexController extends HomeController {
 
 	//系统首页
     public function index(){
-    	$Token=A('Api')->getAccessToken();
-    	// $url="https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=".$Token["access_token"];
-    	$url="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=".$Token["access_token"];
-        $data='{
-    		"type":"image",
-    		"offset":0,
-    		"count":10
-			}';
-		$res=$this->httpsPost($url,$data);
-		$res=json_decode($res);
-		dump($res);
-		die;
+    	$img=M('mainimg')->find();
+    	$this->assign('img',$img);
+    	$db=M('newscategory');
+		$data=$db->order('status ASC')->select();
+		$this->assign('data',$data);
         $this->display();
     }
 
+    public function category(){
+    	$db=M('newscategory');
+		$list=$db->order('status ASC')->select();
+		$this->assign('list',$list);
 
-    public function uploadImage(){
-    	$appid=C('WEI_APPID');
-		$secret=C('WEI_SECRET');
-		$Token=A('Api')->getAccessToken();
-		$WechatAuth = new WechatAuth($appid, $secret, $Token["access_token"]);
-		$userimg = './1.jpg';
-	    $type = 'image';
-		$media = $WechatAuth->materialUpload($userimg,$type);
-		$res=json_decode($media);
-		dump($res);
-		die;
+
+		$cat=I('get.cat');
+		$newdb=M('news');
+		if(isset($_GET['category'])){
+				$where=array('category'=>$_GET['category']);
+			   }
+		$getPageCounts = $newdb->where($where)->count();
+        $pageSize = 15;
+        $page = new \Think\Page($getPageCounts, $pageSize, $where);
+        $data = $newdb->where($where)->limit($page->firstRow, $page->listRows)
+                       ->select();
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+
+		$pageShow = $page->show();
+        $this->assign('page', $pageShow);
+		$this->assign('data',$data);
+
+
+    	$this->display();
     }
 
-
-
-    public function getStuff($type){
-    	$Token=A('Api')->getAccessToken();
-    	$url="https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=".$Token["access_token"];
-        $data='{
-    		"type":"'.$type.'",
-    		"offset":0,
-    		"count":10
-			}';
-		$res=$this->httpsPost($url,$data);
-		$res=json_decode($res);
-		dump($res);
-		die;
-		return $res;
-    }
-
-    public function totalStuff(){
-    	$Token=A('Api')->getAccessToken();
-    	$url="https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=".$Token["access_token"];
-		$res=$this->httpsPost($url,$data);
-		$res=json_decode($res);
-		dump($res);
-		die;
-		return $res;
-    }
-
-    public function getMenu(){
-    	$appid=C('WEI_APPID');
-		$secret=C('WEI_SECRET');
-		$Token=A('Api')->getAccessToken();
-		$WechatAuth = new WechatAuth($appid, $secret, $Token["access_token"]);
-		$menu=$WechatAuth->menuGet();
-		dump($menu);
-		die;
-    }
-
-
-
-    private function httpsPost($url, $data = null) {
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-		if (!empty($data)) {
-			curl_setopt($curl, CURLOPT_POST, 1);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-		}
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		$result = curl_exec($curl);
-		if (curl_errno($curl)) {
-			return 'Errno' . curl_error($curl);
-		}
-		curl_close($curl);
-		return $result;
-	}
-
-	private function httpGet($url) {
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_TIMEOUT, 500);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($curl, CURLOPT_URL, $url);
-		$res = curl_exec($curl);
-		curl_close($curl);
-		return $res;
-	}
 }

@@ -37,113 +37,23 @@ document.addEventListener('DOMContentLoaded', loaded, false);
 </head>
 <body id="cate4">
 
-<div class="banner"><img src="http://ww4.sinaimg.cn/large/690ed5aftw1eg7357ktgzj20gs0b6gnx.jpg"></div>
+<div class="banner"><img src="{$img.image|get_cover='path'}"></div>
 
  
 <div id="insert1"></div>
 <div id="todayList">
 <ul class="todayList">
-   
+<volist name="data" id="vo">
 <li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=138997">
-<div class="img"><img src="http://i1.tietuku.com/7552a6de58ad4a2ds.png"></div>
-<h2>壹读百科</h2>
-<p class="onlyheight">百科、历史、冷知识</p>
+<a href="{:U('category',array('category'=>$vo['id']))}">
+<div class="img"><img src="{$vo.image|get_cover='path'}"></div>
+<h2>{$vo.title}</h2>
+<p class="onlyheight">{$vo.subtitle}</p>
 <span class="icon">&nbsp;</span>
 <div class="clr"></div>
 </a>
 </li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=234985">
-<div class="img"><img src="http://i1.tietuku.com/11dbb23d10d320d4s.png"></div>
-<h2>涨姿势</h2>
-<p class="onlyheight">轻幽默、有情趣，涨姿势、正三观</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=274445">
-<div class="img"><img src="http://i1.tietuku.com/51b809ca1c6d8d72s.png"></div>
-<h2>壹百会</h2>
-<p class="onlyheight">壹读百科工会，有知识的人终会走到一起。</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=264926">
-<div class="img"><img src="http://i1.tietuku.com/b183562f80bd6884s.png"></div>
-<h2>壹读知道</h2>
-<p class="onlyheight">一些偶尔会困扰你的小问题</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://diantai.ifeng.com/fmShare/album.php?pid=80171&amp;pf=android&amp;v=6.1.1&amp;s=wxf">
-<div class="img"><img src="http://i1.tietuku.com/c15a8161aa615fc4s.png"></div>
-<h2>壹读说</h2>
-<p class="onlyheight">壹读君与凤凰fm共同制作的语音栏目</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=283005">
-<div class="img"><img src="http://i13.tietuku.com/32fa0e7573935facs.jpg"></div>
-<h2>壹起读书</h2>
-<p class="onlyheight">壹读君认证的好书推荐</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=283004">
-<div class="img"><img src="http://i13.tietuku.com/6450f3cfccb74da9s.jpg"></div>
-<h2>海外夜谈</h2>
-<p class="onlyheight">海外留学、旅居、旅行的有趣故事。</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=235025">
-<div class="img"><img src="http://i1.tietuku.com/0fe9a216eb919624s.png"></div>
-<h2>职觉</h2>
-<p class="onlyheight">揭秘各种职业的“身后事”</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=235026">
-<div class="img"><img src="http://i1.tietuku.com/cb239f83b96b0d57s.jpg"></div>
-<h2>壹读穿越</h2>
-<p class="onlyheight">壹读君的时光机</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
- 
-<li class="only4">
-<a href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&amp;tid=252997">
-<div class="img"><img src="http://i1.tietuku.com/caa3fd01a1e9da53s.png"></div>
-<h2>OK CEO访谈</h2>
-<p class="onlyheight">BOSS的心，你懂不懂？</p>
-<span class="icon">&nbsp;</span>
-<div class="clr"></div>
-</a>
-</li>
-    
+</volist>
 </ul>
 </div>
 <script>
@@ -181,5 +91,5 @@ var timestampstr =1458978043;
 var nonceStrstr='2mboXpkDrY7asHt0';
 var signaturestr='e1d95f62d93da6a29d1653a4a8544d88ef72349d';
 </script>
-<script src="__JS__/js/newfxjs.js" type="text/javascript"></script> 
+<script src="__JS__/newfxjs.js" type="text/javascript"></script> 
 </body></html>

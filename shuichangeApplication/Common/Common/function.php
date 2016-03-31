@@ -903,6 +903,7 @@ function get_cover($cover_id, $field = null){
     return empty($field) ? $picture : $picture[$field];
 }
 
+
 /**
  * 检查$pos(推荐位的值)是否包含指定推荐位$contain
  * @param number $pos 推荐位的值

@@ -21,7 +21,7 @@ class WeixinController extends HomeController {
 
 			if ($data['Event'] == 'subscribe') {
 				$response="亲！服务号正在升级开发中，敬请期待~";
-
+				
 			} else if ($data['Event'] == 'unsubscribe') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_CUSTOMERMESSAGE') {
