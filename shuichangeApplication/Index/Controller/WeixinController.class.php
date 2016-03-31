@@ -33,9 +33,9 @@ class WeixinController extends HomeController {
 			
 			}
 			if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
-				$response="亲！服务号正在升级开发中，敬请期待~";
+				$response="欢迎关注水禅阁！";
 			}
-			$test_str = "亲！服务号正在升级开发中，敬请期待~";
+			$test_str = "欢迎关注水禅阁！";
 			$index_response = $test_str;
 			$text = isset($response) ? $response : $index_response;
 			$wechat->response($text, 'text');

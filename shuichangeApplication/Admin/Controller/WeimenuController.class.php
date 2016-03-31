@@ -88,8 +88,12 @@ public function weixinMenu(){
         			foreach($idarr as $k=>$v){
         				$ids[$k]=$v['id'];
         			}
+        			if($ids){
         			array_push($ids,$id);
         			$map=array('id' => array('in', $ids) );
+        		}else{
+        			$map=array('id'=>$id);
+        			}
         		}else{
         			$map=array('id'=>$id);
         			}
