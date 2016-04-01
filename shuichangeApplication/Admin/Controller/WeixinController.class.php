@@ -122,6 +122,7 @@ class WeixinController extends AdminController {
 			$id=$_GET['id'];
 			$data=M('news')->where(array('id'=>$id))->find();
 			$this->assign('data',$data);
+			
 			$this->display('editNews');
 		}
 
