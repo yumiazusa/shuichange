@@ -31,8 +31,7 @@ class WeixinController extends HomeController {
 				
 			} else if ($data['Event'] == 'SCAN') {
 			
-			}
-			if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
+			}else if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
 				exit;
 			}
 
