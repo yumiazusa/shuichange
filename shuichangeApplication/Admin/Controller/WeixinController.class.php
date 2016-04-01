@@ -46,6 +46,7 @@ class WeixinController extends AdminController {
 			$data['title']=I('post.title');
 			$data['image']=I('post.image');
 			$data['status']=I('post.status');
+			$data['subtitle']=I('subtitle');
 
 			$catdb=M('newscategory');
 
