@@ -20,7 +20,7 @@ class WeixinController extends HomeController {
 			$access_token['openid'] = $data['FromUserName'];
 
 			if ($data['Event'] == 'subscribe') {
-				$response="亲！服务号正在升级开发中，敬请期待~";
+				$response=C('WEI_REPLAYWORD_SUBSCRIBE');
 				
 			} else if ($data['Event'] == 'unsubscribe') {
 				
@@ -33,7 +33,7 @@ class WeixinController extends HomeController {
 			
 			}
 			if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
-				
+				exit;
 			}
 
 			$test_str = C('WEI_REPLAYWORD_SUBSCRIBE');
