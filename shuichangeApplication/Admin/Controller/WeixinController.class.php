@@ -10,13 +10,13 @@ class WeixinController extends AdminController {
 		public function mainImg(){
 			$img=M('mainimg')->where(array('id'=>1))->find();
 			$this->assign('img',$img);
-			$this->display();
+			$this->display('mainImg');
 		}
 
 		public function editImg(){
 			$img=M('mainimg')->where(array('id'=>1))->find();
 			$this->assign('img',$img);
-			$this->display();
+			$this->display('editImg');
 		}
 
 
@@ -39,7 +39,7 @@ class WeixinController extends AdminController {
 		}
 
 		public function addCategory(){
-			$this->display();
+			$this->display('addCategory');
 		}
 
 		public function doAddcategory(){
@@ -62,7 +62,7 @@ class WeixinController extends AdminController {
 			$id=I('get.id');
 			$data=M('newscategory')->where(array('id'=>$id))->find();
 			$this->assign('data',$data);
-			$this->display();
+			$this->display('editCategory');
 		}
 
 		public function doEditcategory(){
@@ -122,7 +122,7 @@ class WeixinController extends AdminController {
 			$id=$_GET['id'];
 			$data=M('news')->where(array('id'=>$id))->find();
 			$this->assign('data',$data);
-			$this->display();
+			$this->display('editNews');
 		}
 
 		public function doEditnewscategory(){
