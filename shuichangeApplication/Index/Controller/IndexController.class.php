@@ -16,10 +16,14 @@ class IndexController extends HomeController {
 
 	//系统首页
     public function index(){
+        $type=I('get.type');
     	$img=M('mainimg')->find();
     	$this->assign('img',$img);
     	$db=M('newscategory');
-		$data=$db->order('status ASC')->select();
+        if($type && $type == 'chan'){
+            $where['id']=array('lt',6);
+        }
+		$data=$db->order('status ASC')->$where($where)->select();
 		$this->assign('data',$data);
         $this->display();
     }
