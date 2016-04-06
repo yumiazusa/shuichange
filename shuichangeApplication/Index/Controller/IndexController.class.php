@@ -33,8 +33,6 @@ class IndexController extends HomeController {
 		$list=$db->order('status ASC')->select();
 		$this->assign('list',$list);
 
-
-		$cat=I('get.category');
 		$newdb=M('news');
 		if(isset($_GET['category'])){
 				$where=array('category'=>$_GET['category']);
@@ -50,7 +48,7 @@ class IndexController extends HomeController {
 		$pageShow = $page->show();
         dump($category);
         die;
-        $this->assign('category',$category);
+        $this->assign('category',$_GET['category']);
         $this->assign('page', $pageShow);
 		$this->assign('data',$data);
 
