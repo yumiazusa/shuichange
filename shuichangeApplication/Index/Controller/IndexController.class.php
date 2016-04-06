@@ -34,7 +34,7 @@ class IndexController extends HomeController {
 		$this->assign('list',$list);
 
 
-		$cat=I('get.cat');
+		$cat=I('get.category');
 		$newdb=M('news');
 		if(isset($_GET['category'])){
 				$where=array('category'=>$_GET['category']);
