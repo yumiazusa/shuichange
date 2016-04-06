@@ -82,6 +82,7 @@ oWin.style.display = "none"
 };
 </script>
 <body id="listhome1">
+<if condition="$data[0]['category'] lt 7">
 <div id="ui-header">
 <div class="fixed">
 <a class="ui-title" id="popmenu">选择分类</a>
@@ -98,6 +99,7 @@ oWin.style.display = "none"
 <div class="clr"></div>
 </ul>
 </div>
+</if>
 <div class="Listpage">
 <div class="top46"></div>
 <div id="todayList">
@@ -125,6 +127,7 @@ oWin.style.display = "none"
 </div>
 <div class=" " ><a  href="http://wx13255.wxapi.cn/wxapi.php?ac=listhome1&tid=138997&page=2"   >下一页</a></div>
 </div> -->
+</div>
 </div>
 <script>
 function dourl(url){
