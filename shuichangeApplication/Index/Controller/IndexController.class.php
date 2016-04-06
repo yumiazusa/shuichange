@@ -48,6 +48,7 @@ class IndexController extends HomeController {
         $page->setConfig('next','下一页');
 
 		$pageShow = $page->show();
+        $this->assign('category',$category);
         $this->assign('page', $pageShow);
 		$this->assign('data',$data);
 
