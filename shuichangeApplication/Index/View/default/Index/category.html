@@ -105,7 +105,7 @@ oWin.style.display = "none"
 <div id="win">
 <ul class="dropdown">
 <volist name="list" id ="vo">
-<if condition="$vo['category'] gt 6">
+<if condition="$vo['id'] gt 6">
 <li><a href="{:U('category',array('category'=>$vo['id']))}"><span>{$vo.title}</span></a></li>
 </if>
 </volist>
