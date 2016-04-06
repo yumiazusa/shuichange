@@ -21,9 +21,9 @@ class IndexController extends HomeController {
     	$this->assign('img',$img);
     	$db=M('newscategory');
         if($type && $type == 'chan'){
-            $where['id']=array('lt',6);
+            $map['id']=array('lt',6);
         }
-		$data=$db->order('status ASC')->$where($where)->select();
+		$data=$db->order('status ASC')->where($map)->select();
 		$this->assign('data',$data);
         $this->display();
     }
