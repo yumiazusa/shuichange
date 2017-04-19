@@ -21,7 +21,7 @@ class WeixinController extends HomeController {
 
 			if ($data['Event'] == 'subscribe') {
 				$response=C('WEI_REPLAYWORD_SUBSCRIBE');
-				
+				$response='你好，歡迎關注';
 			} else if ($data['Event'] == 'unsubscribe') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_CUSTOMERMESSAGE') {
