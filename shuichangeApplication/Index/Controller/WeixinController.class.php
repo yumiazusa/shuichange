@@ -7,8 +7,6 @@ use Com\WechatAuth;
 class WeixinController extends HomeController {
 
 	public function index() {
-			dump('ok');
-			die;
 			$token = 'yumiazusa'; //微信后台填写的TOKEN
 			$appid=C('WEI_APPID');
 		    $secret=C('WEI_SECRET');
