@@ -18,18 +18,18 @@ class IndexController extends HomeController {
 
 	//首页
     public function index(){
-
-        $category = D('Category')->getTree();
-        $lists    = D('Document')->lists(null);
-
-        $this->assign('category',$category);//栏目
-        $this->assign('lists',$lists);//列表
-        $this->assign('page',D('Document')->page);//分页
+        $db=M('muyeindex');
+        $data=$db->order('orderlist ASC')->select();
+        $this->assign('data',$data);
         $this->display();
     }
 
     //單頁
     public function single(){
+        $pid=I('get.pid');
+        $db=M('muyesingle');
+        $data=$db->where(array('pid'=>$pid))->order('orderlist ASC')->select();
+        $this->assign('data',$data);
         $this->display();
     }
 

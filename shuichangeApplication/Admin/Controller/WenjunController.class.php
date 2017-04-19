@@ -8,83 +8,120 @@ class WenjunController extends AdminController {
 
 
 		public function index(){
-			
-		}
-
-
-		public function mainImg(){
-			$img=M('mainimg')->where(array('id'=>1))->find();
-			$this->assign('img',$img);
-			$this->display('mainImg');
-		}
-
-		public function editImg(){
-			$img=M('mainimg')->where(array('id'=>1))->find();
-			$this->assign('img',$img);
-			$this->display('editImg');
-		}
-
-
-		public function saveimg(){
-			$data=I('post.');
-			$db=M('mainimg');
-			$res=$db->where(array('id'=>1))->save($data);
-	        if($res !== false){
-	          $this->success('提交成功',U('mainImg'),3);
-	        }else{
-	          $this->success('提交失败');
-	        }
-		}
-
-		public function category(){
-			$db=M('newscategory');
-			$data=$db->order('status ASC')->select();
+			$db=M('muyeindex');
+			$data=$db->order('orderlist ASC')->select();
 			$this->assign('data',$data);
 			$this->display();
 		}
 
-		public function addCategory(){
-			$this->display('addCategory');
+		public function addIndex(){
+			$this->display('addIndex');
 		}
 
-		public function doAddcategory(){
-			$data['title']=I('post.title');
+		public function doAddindex(){
+			$data['name']=I('post.name');
 			$data['image']=I('post.image');
-			$data['status']=I('post.status');
-			$data['subtitle']=I('subtitle');
-
-			$catdb=M('newscategory');
+			$data['orderlist']=I('post.orderlist');
+			$data['describe']=I('describe');
+			$catdb=M('muyeindex');
 
 			$res= $catdb->add($data);
 
 			if($res !== false){
-	          $this->success('提交成功',U('category'),3);
+	          $this->success('提交成功',U('index'),3);
 	        }else{
 	          $this->success('提交失败');
 	        }
 		}
 
-		public function editCategory(){
+		public function editIndex(){
 			$id=I('get.id');
-			$data=M('newscategory')->where(array('id'=>$id))->find();
+			$data=M('muyeindex')->where(array('id'=>$id))->find();
 			$this->assign('data',$data);
-			$this->display('editCategory');
+			$this->display('editIndex');
 		}
 
-		public function doEditcategory(){
+		public function doEditindex(){
 			$data=I('post.');
-			$db=M('newscategory');
+			$db=M('muyeindex');
 			$res=$db->where(array('id'=>$data['id']))->save($data);
 	        if($res !== false){
-	          $this->success('提交成功',U('category'),3);
+	          $this->success('提交成功',U('index'),3);
 	        }else{
 	          $this->success('提交失败');
 	        }
 		}
 
-		public function delCategory(){
+		public function delIndex(){
 			$id=I('get.id');
-			$res=M('newscategory')->where(array('id'=>$id))->delete();
+			$res=M('muyeindex')->where(array('id'=>$id))->delete();
+			if($res !== false){
+	          $this->success('提交成功');
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+
+		public function single(){
+			$data=array();
+			$data['pid']=$pid=I('get.pid');
+			$db=M('muyesingle');
+			$data=$db->where(array('pid'=>$pid))->order('orderlist ASC')->select();
+			$this->assign(
+				array('data'=>$data,
+					  'pid'=>$pid)
+					);
+			$this->display();
+		}
+
+
+		public function addSingle(){
+			$pid=I('get.pid');
+			$this->assign('pid',$pid);
+			$this->display('addSingle');
+		}
+
+
+		public function doAddsingle(){
+			$data['pid']=I('post.pid');
+			$data['name']=I('post.name');
+			$data['image']=I('post.image');
+			$data['orderlist']=I('post.orderlist');
+			$data['describe']=I('describe');
+
+			$catdb=M('muyesingle');
+
+			$res= $catdb->add($data);
+
+			if($res !== false){
+	          $this->success('提交成功',U('single',array('pid'=>$data['pid'])),3);
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+		public function editSingle(){
+			$id=I('get.id');
+			$data=M('muyesingle')->where(array('id'=>$id))->find();
+			$this->assign('data',$data);
+			$this->display('editSingle');
+		}
+
+		public function doEditsingle(){
+			$data=I('post.');
+			$db=M('muyesingle');
+			$res=$db->where(array('id'=>$data['id']))->save($data);
+	        if($res !== false){
+	          $this->success('提交成功',U('single',array('pid'=>$data['pid'])),3);
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+		public function delSingle(){
+			$id=I('get.id');
+			$res=M('muyesingle')->where(array('id'=>$id))->delete();
 			if($res !== false){
 	          $this->success('提交成功');
 	        }else{
