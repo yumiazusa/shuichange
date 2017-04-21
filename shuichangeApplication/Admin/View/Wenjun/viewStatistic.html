@@ -1,0 +1,105 @@
+<extend name="Public/base"/>
+
+<block name="style">
+
+<style>
+table,tr,td{
+	border: 1px solid black;
+}
+</style>
+
+</block>
+
+<block name="body">
+
+	<div class="main-title">
+
+		<h2>主頁分類</h2>
+
+	</div>
+
+
+
+	<div class="cf">
+		<a class="btn" href="{:U('editStatistic',array('id'=>$data['id']))}">編輯</a>
+		<a class="btn" href="javascript:void(0);" onclick="javascript:history.back(-1);return false;">返回</a>
+	</div>
+
+	<div class="data-table table-striped">
+
+		 <table>
+
+			<thead>
+
+				<tr>
+                    <th style="text-align: center">客戶</th>
+                    <th>{$data.name}</th>
+                    <th style="text-align: center">電話</th>
+                    <th>{$data.phone}</th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				<notempty name="data">
+				<tr>
+					<td style="text-align: center;">{$data.explain}</td>
+					<td colspan="3" style="text-align: center;"><img width="30%" src="{$data.pic|get_cover='path'}"/></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">預定時間：<if condition="$data['reservetime'] eq 0">
+							<else />{$data.reservetime|date='Y-m-d H:i',###}
+							</if></td>
+					<td style="text-align: center;">定金：{$data.reservefee}元</td>
+					<td style="text-align: center;">總價：{$data.allfee}元</td>
+					<td style="text-align: center;"><if condition="$data['endingtime'] eq 0">未完成
+							<else />完成時間：{$data.endingtime|date='Y-m-d H:i',###}</if></td>
+					
+				</tr>
+				<tr>
+					<td style="text-align: center;"><if condition="$data['medicinfee'] eq 0">未用麻藥
+							<else />麻藥價格：{$data.medicinfee}元
+							</if></td>
+					<td style="text-align: center;">
+						<if condition="$data['finishtime'] eq 0">未完成
+							<else />
+							完成時長：{$data.finishtime}小時
+						</if></td>
+					<td style="text-align: center;">是否完成：<if condition="$data['finish'] eq 0">未完成
+							<else />完成
+							</if></td>
+					<td style="text-align: center;">渠道來源：{$data.channel}</td>
+				</tr>
+
+				<notempty name="data['other']">
+				<tr>
+					<td colspan="4"  style="text-align: center;">{$data.other}</td>
+				</tr>
+				</notempty>
+
+
+				<else/>
+
+				<td colspan="4" class="text-center"> aOh! 暂时还没有内容! </td>
+
+				</notempty>
+
+			</tbody>
+
+		</table>
+
+        <!-- 分页 -->
+	</div>
+
+</block>
+
+<block name="script">
+
+<script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+</block>

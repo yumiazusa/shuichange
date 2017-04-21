@@ -35,6 +35,7 @@
 					<th>副标题</th>
 					<th>图片</th>
 					<th>排序</th>
+					<th>狀態</th>
 					<th>操作</th>
 
 				</tr>
@@ -52,6 +53,7 @@
 						<td width="10%"><a href="{:U('single',array('pid'=>$vo['id']))}">{$vo.describe}</a></td>
 						<td ><a href="{:U('single',array('pid'=>$vo['id']))}"><img width="10%" src="{$vo.image|get_cover='path'}"/></a></td>
 						<td width="10%">{$vo.orderlist}</td>
+						<td width="10%">{$vo.status}</td>
 						<td width="10%">
                         <a title="编辑" href="{:U('editIndex',array('id'=>$vo['id']))}">编辑</a>
 						<a href="{:U('delIndex',array('id'=>$vo['id']))}" class="confirm ajax-get">删除</a>

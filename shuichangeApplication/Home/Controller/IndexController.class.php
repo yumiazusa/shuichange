@@ -28,7 +28,7 @@ class IndexController extends HomeController {
     public function single(){
         $pid=I('get.pid');
         $db=M('muyesingle');
-        $data=$db->where(array('pid'=>$pid))->order('orderlist ASC')->select();
+        $data=$db->where(array('pid'=>$pid))->where(array('status'=>1))->order('orderlist ASC')->select();
         $this->assign('data',$data);
         $this->display();
     }

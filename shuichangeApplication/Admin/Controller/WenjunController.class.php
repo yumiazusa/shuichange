@@ -129,6 +129,168 @@ class WenjunController extends AdminController {
 	        }
 		}
 
+		public function statistic(){
+		// 查询总记录数
+		$db=M('customer');
+		$map =array();
+		if (isset($_GET)) {
+			$get=$_GET;
+			foreach($get as$k => $v){
+				if($v== 1 && $k =='status'){
+					$map['finish']=1;
+				}elseif($v == 0 && $k =='status'){
+					$map['finish']=0;
+				}
+
+				if($k=='name'){
+					$v=str_replace('，',',',$v);
+                    $v=trim($v,',');
+                    $v=explode(',',$v);
+                    $val1=array();
+                   	foreach($v as $key=>$val){
+                        $val1[$key]='%'.trim($val).'%';
+                        }
+                    $map[$k] =array('like',$val1,'OR');
+				}
+
+					if($k=='timestart' && $k==!''){
+						$map1[$k]=strtotime($v);
+					}
+					if($k=='timeend' && $k==!''){
+						$map1[$k]=strtotime($v);
+					}
+
+			}
+		}
+		if(!empty($map1)){
+			if( count($map1)==2){
+				$map2=array();
+				foreach($map1 as $k1=>$v1){
+					Array_push($map2,$v1);
+				}
+				$map['endingtime']=array('between',$map2);
+			}else{
+				foreach($map1 as $k1=>$v1){
+					if($k1 =='timestart'){
+						$map['endingtime']=array('gt',$v1);
+					}elseif($k1 =='timeend'){
+						$map['endingtime']=array('lt',$v1);
+					}
+				}
+			}
+		}
+
+        $getPageCounts = $db->where($map)->count();
+        // 每页显示 $pageSize 条数据
+        $pageSize = 15;
+        // 实例化分页类
+        $page = new \Think\Page($getPageCounts, $pageSize, $map);
+
+        $data = $db->where($map)
+                    ->order('id ASC')->limit($page->firstRow, $page->listRows)
+                    ->select();
+
+        $pageShow = $page->show();
+        $this->assign('page', $pageShow);
+		$this->assign(
+				array('data'=>$data,
+					  )
+					);
+			$this->display();
+		}
+
+		public function addStatistic(){
+			$this->display('addStatistic');
+		}
+
+
+		public function doAddstatistic(){
+			// $data['name']=I('post.name');
+			// $data['image']=I('post.image');
+			// $data['comeintime']=I('post.comeintime');
+			// $data['reservetime']=I('post.reservetime');
+			// $time=strtotime($data['reservetime']);
+			// $data['orderlist']=I('post.orderlist');
+			// $data['describe']=I('describe');
+			$data=I('post.');
+			if($data['comeintime']){
+				$data['comeintime']=strtotime($data['comeintime']);
+			}
+			if($data['reservetime']){
+				$data['reservetime']=strtotime($data['reservetime']);
+			}
+			if($data['endingtime']){
+				$data['endingtime']=strtotime($data['endingtime']);
+			}
+			// dump($data);
+			// die;
+			$catdb=M('customer');
+
+			$res= $catdb->add($data);
+
+			if($res !== false){
+	          $this->success('提交成功',U('statistic'),3);
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+		public function editStatistic(){
+			$id=I('get.id');
+			$data=M('customer')->where(array('id'=>$id))->find();
+			if($data['comeintime']){
+				$data['comeintime']=date('Y-m-d H:i',$data['comeintime']);
+			}
+			if($data['reservetime']){
+				$data['reservetime']=date('Y-m-d H:i',$data['reservetime']);
+			}
+			if($data['endingtime']){
+				$data['endingtime']=date('Y-m-d H:i',$data['endingtime']);
+			}
+			$this->assign('data',$data);
+			$this->display('editStatistic');
+		}
+
+		public function doEditstatistic(){
+			$data=I('post.');
+			if($data['comeintime']){
+				$data['comeintime']=strtotime($data['comeintime']);
+			}
+			if($data['reservetime']){
+				$data['reservetime']=strtotime($data['reservetime']);
+			}
+			if($data['endingtime']){
+				$data['endingtime']=strtotime($data['endingtime']);
+				$data['finish']=1;
+			}
+			// dump($data);
+			// die;
+			$db=M('customer');
+			$res=$db->where(array('id'=>$data['id']))->save($data);
+	        if($res !== false){
+	          $this->success('提交成功',U('statistic',array('pid'=>$data['pid'])),3);
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+		public function delStatistic(){
+			$id=I('get.id');
+			$res=M('customer')->where(array('id'=>$id))->delete();
+			if($res !== false){
+	          $this->success('提交成功');
+	        }else{
+	          $this->success('提交失败');
+	        }
+		}
+
+		public function viewStatistic(){
+			$id=I('get.id');
+			$data=M('customer')->where(array('id'=>$id))->find();
+			$this->assign('data',$data);
+			$this->display('viewStatistic');
+		}
+
 		public function news(){
 			$list=M('newscategory')->order('status ASC')->select();
 			$this->assign('list',$list);
