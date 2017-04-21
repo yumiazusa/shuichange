@@ -209,14 +209,16 @@ $(function(){
     $('#time-start').datetimepicker({
         format: 'yyyy-mm-dd',
         language:"zh-CN",
-	    minView:2,
-	    autoclose:true
+        startView:3,
+        minView:'month',
+        autoclose:true
     });
 
     $('#datetimepicker').datetimepicker({
        format: 'yyyy-mm-dd',
         language:"zh-CN",
-        minView:2,
+        startView:3,
+        minView:'month',
         autoclose:true,
         pickerPosition:'bottom-left'
     })

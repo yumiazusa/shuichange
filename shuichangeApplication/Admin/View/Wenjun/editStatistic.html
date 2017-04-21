@@ -163,27 +163,30 @@
 
 $(function(){
      $('#time-start').datetimepicker({
-        format: 'yyyy-mm-dd h:i',
+        format: 'yyyy-mm-dd h',
         language:"zh-CN",
-        minView:0,
-        autoclose:false
+        startView:3,
+        minView:'day',
+        autoclose:true
     });
 })
 
 $(function(){
      $('#time-reserve').datetimepicker({
-        format: 'yyyy-mm-dd h:i',
+        format: 'yyyy-mm-dd h',
         language:"zh-CN",
-        minView:0,
-        autoclose:false
+        startView:3,
+        minView:'day',
+        autoclose:true
     });
 })
 $(function(){
      $('#time-ending').datetimepicker({
-        format: 'yyyy-mm-dd h:i',
+        format: 'yyyy-mm-dd h',
         language:"zh-CN",
-        minView:0,
-        autoclose:false
+        startView:3,
+        minView:'day',
+        autoclose:true
     });
 })
 </script>
