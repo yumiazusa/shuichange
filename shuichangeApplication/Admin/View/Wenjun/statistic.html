@@ -36,14 +36,29 @@
 				</select>
 			</div>
 
-				<input type="text" name="name" id='rename' class="search-input" value="" placeholder="请输入标题文档">
+				<input type="text" name="name" id='rephone' class="search-input" value="" placeholder="请输入電話號碼">
+				
+				<input type="text" name="name" id='rename' class="search-input" value="" placeholder="请输入客戶名字">
 				<a class="sch-btn" href="javascript:;" id="search" url="{:U('statistic')}"><i class="btn-search"></i></a>
 			</div>
-            <div class="btn-group-click adv-sch-pannel fl">
-                <button class="btn">高 级<i class="btn-arrowdown"></i></button>
+            <div class="btn-group-click adv-sch-pannel fl" style="margin-right: 5px;">
+                <button class="btn">預約時間<i class="btn-arrowdown"></i></button>
                 <div class="dropdown cf">
                 	<div class="row">
                 		<label>預約時間：</label>
+                		<input type="text" id="time-start1" name="time-start1" class="text input-2x" value="" placeholder="起始时间" /> -
+                        <div class="input-append date" id="datetimepicker"  style="display:inline-block">
+                            <input type="text" id="time-end1" name="time-end1" class="text input-2x" value="" placeholder="结束时间" />
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                	</div>
+                </div>
+            </div>
+            <div class="btn-group-click adv-sch-pannel fl">
+                <button class="btn">完成時間<i class="btn-arrowdown"></i></button>
+                <div class="dropdown cf">
+                	<div class="row">
+                		<label>完成時間：</label>
                 		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
                         <div class="input-append date" id="datetimepicker"  style="display:inline-block">
                             <input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
@@ -161,10 +176,16 @@ $(function(){
 		var url = $(this).attr('url');
 		var status = $(".status").find("option:selected").val();
 		var name =$.trim($('.search-form').find('#rename').val());
+		var phone =$.trim($('.search-form').find('#rephone').val());
 		var timestart = $('#time-start').val();
 		var timeend = $('#time-end').val();
+		var timestart1 = $('#time-start1').val();
+		var timeend1 = $('#time-end1').val();
 		if(status != ''){
 			query += 'status=' + status;
+        }
+        if(phone != ''){
+			query += '&phone=' + phone;
         }
         if(name != ''){
 			query += '&name=' + name;
@@ -174,6 +195,12 @@ $(function(){
         }
         if(timeend != ''){
 			query += '&timeend=' + timeend + ' 23:59';
+        }
+        if(timestart1 != ''){
+			query += '&timestart1=' + timestart + ' 00:00';
+        }
+        if(timeend1 != ''){
+			query += '&timeend1=' + timeend + ' 23:59';
         }
 
         if( url.indexOf('?')>0 ){
@@ -213,16 +240,29 @@ $(function(){
         minView:'month',
         autoclose:true
     });
-
-    $('#datetimepicker').datetimepicker({
-       format: 'yyyy-mm-dd',
+    $('#time-end').datetimepicker({
+        format: 'yyyy-mm-dd',
         language:"zh-CN",
         startView:3,
         minView:'month',
-        autoclose:true,
-        pickerPosition:'bottom-left'
-    })
-    
+        autoclose:true
+    });
+    $('#time-start1').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        startView:3,
+        minView:'month',
+        autoclose:true
+    });
+    $('#time-end1').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        startView:3,
+        minView:'month',
+        autoclose:true
+    });
+
+
 })
 
 

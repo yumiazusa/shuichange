@@ -151,6 +151,17 @@ class WenjunController extends AdminController {
                         $val1[$key]='%'.trim($val).'%';
                         }
                     $map[$k] =array('like',$val1,'OR');
+                    // $map['phone']=array('like',$val1,'OR');
+				}
+				if($k=='phone'){
+					$v=str_replace('，',',',$v);
+                    $v=trim($v,',');
+                    $v=explode(',',$v);
+                    $val2=array();
+                   	foreach($v as $key=>$val){
+                        $val2[$key]='%'.trim($val).'%';
+                        }
+                    $map[$k] =array('like',$val2,'OR');
 				}
 
 					if($k=='timestart' && $k==!''){
@@ -158,6 +169,12 @@ class WenjunController extends AdminController {
 					}
 					if($k=='timeend' && $k==!''){
 						$map1[$k]=strtotime($v);
+					}
+					if($k=='timestart1' && $k==!''){
+						$map3[$k]=strtotime($v);
+					}
+					if($k=='timeend1' && $k==!''){
+						$map3[$k]=strtotime($v);
 					}
 
 			}
@@ -175,6 +192,23 @@ class WenjunController extends AdminController {
 						$map['endingtime']=array('gt',$v1);
 					}elseif($k1 =='timeend'){
 						$map['endingtime']=array('lt',$v1);
+					}
+				}
+			}
+		}
+		if(!empty($map3)){
+			if( count($map3)==2){
+				$map4=array();
+				foreach($map3 as $k1=>$v1){
+					Array_push($map4,$v1);
+				}
+				$map['reservetime']=array('between',$map4);
+			}else{
+				foreach($map3 as $k1=>$v1){
+					if($k1 =='timestart1'){
+						$map['reservetime']=array('gt',$v1);
+					}elseif($k1 =='timeend1'){
+						$map['reservetime']=array('lt',$v1);
 					}
 				}
 			}
