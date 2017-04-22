@@ -33,4 +33,8 @@ class IndexController extends HomeController {
         $this->display();
     }
 
+    public function main(){
+        $this->display();
+    }
+
 }
