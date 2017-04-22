@@ -355,6 +355,11 @@ class WenjunController extends AdminController {
 			$this->display();
 		}
 
+
+		public function schedul(){
+			$this->display();
+		}
+
 		public function editNews(){
 			$list=M('newscategory')->order('status ASC')->select();
 			$this->assign('list',$list);
