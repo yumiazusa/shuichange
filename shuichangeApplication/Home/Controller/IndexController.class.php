@@ -34,7 +34,7 @@ class IndexController extends HomeController {
     }
 
     public function main(){
-        $this->display();
+        $this->display('main');
     }
 
 }
