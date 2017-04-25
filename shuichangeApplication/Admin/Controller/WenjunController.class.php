@@ -247,17 +247,20 @@ class WenjunController extends AdminController {
 			// $data['orderlist']=I('post.orderlist');
 			// $data['describe']=I('describe');
 			$data=I('post.');
+
 			if($data['comeintime']){
+				$data['comeintime']=$data['comeintime']. ':00';
 				$data['comeintime']=strtotime($data['comeintime']);
 			}
 			if($data['reservetime']){
+				$data['reservetime']=$data['reservetime']. ':00';
 				$data['reservetime']=strtotime($data['reservetime']);
 			}
 			if($data['endingtime']){
+				$data['endingtime']=$data['endingtime']. ':00';
 				$data['endingtime']=strtotime($data['endingtime']);
 			}
-			// dump($data);
-			// die;
+
 			$catdb=M('customer');
 
 			$res= $catdb->add($data);
@@ -288,17 +291,18 @@ class WenjunController extends AdminController {
 		public function doEditstatistic(){
 			$data=I('post.');
 			if($data['comeintime']){
+				$data['comeintime']=$data['comeintime']. ':00';
 				$data['comeintime']=strtotime($data['comeintime']);
 			}
 			if($data['reservetime']){
+				$data['reservetime']=$data['reservetime']. ':00';
 				$data['reservetime']=strtotime($data['reservetime']);
 			}
 			if($data['endingtime']){
+				$data['endingtime']=$data['endingtime']. ':00';
 				$data['endingtime']=strtotime($data['endingtime']);
 				$data['finish']=1;
 			}
-			// dump($data);
-			// die;
 			$db=M('customer');
 			$res=$db->where(array('id'=>$data['id']))->save($data);
 	        if($res !== false){
