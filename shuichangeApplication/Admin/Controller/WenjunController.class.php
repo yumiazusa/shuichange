@@ -223,7 +223,7 @@ class WenjunController extends AdminController {
         $data = $db->where($map)
                     ->order('id ASC')->limit($page->firstRow, $page->listRows)
                     ->select();
-
+                            // echo $db->getLastSql();
         $pageShow = $page->show();
         $this->assign('page', $pageShow);
 		$this->assign(
