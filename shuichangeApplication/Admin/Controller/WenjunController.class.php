@@ -150,8 +150,9 @@ class WenjunController extends AdminController {
                    	foreach($v as $key=>$val){
                         $val1[$key]='%'.trim($val).'%';
                         }
-                    $map[$k] =array('like',$val1,'OR');
+                    $map[$k] =array('like',$val1);
                     // $map['phone']=array('like',$val1,'OR');
+					$parameter .= 'name='.urlencode($map['name']);
 				}
 				if($k=='phone'){
 					$v=str_replace('，',',',$v);
@@ -161,7 +162,8 @@ class WenjunController extends AdminController {
                    	foreach($v as $key=>$val){
                         $val2[$key]='%'.trim($val).'%';
                         }
-                    $map[$k] =array('like',$val2,'OR');
+                    $map[$k] =array('like',$val2);
+                    $parameter .= 'name='.urlencode($map['phone']);
 				}
 
 					if($k=='timestart' && $k==!''){
@@ -213,13 +215,18 @@ class WenjunController extends AdminController {
 				}
 			}
 		}
-
+		// dump($map);
+		// die;
         $getPageCounts = $db->where($map)->count();
         // 每页显示 $pageSize 条数据
         $pageSize = 15;
         // 实例化分页类
-        $page = new \Think\Page($getPageCounts, $pageSize, $map);
+        
+        $page = new \Think\Page($getPageCounts, $pageSize);
 
+        foreach($map as $key=>$val) {
+   		$Page->parameter[$key]   =   urlencode($val);
+		}
         $data = $db->where($map)
                     ->order('id ASC')->limit($page->firstRow, $page->listRows)
                     ->select();
