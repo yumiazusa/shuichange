@@ -64,7 +64,7 @@ tr,td{
 						<td width="10%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.name}</a></td>
 						<td width="10%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.reservetime|date='H:i',###}</a></td>
 						<td>{$vo.explain}</td>
-						<td width="10%">{$vo.other}</td>
+						<td width="20%">{$vo.other}</td>
 						<td width="10%">
                         <a title="编辑" href="{:U('editStatistic',array('id'=>$vo['id']))}">编辑</a>
 						<a href="{:U('delStatistic',array('id'=>$vo['id']))}" class="confirm ajax-get">删除</a>

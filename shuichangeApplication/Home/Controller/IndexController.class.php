@@ -37,4 +37,36 @@ class IndexController extends HomeController {
         $this->display('main');
     }
 
+    public function view(){
+        $time=date('Y-m-d'). '00:00:00';
+            $time=strtotime($time);
+            $timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
+            $timeafter=strtotime($timeafter);
+            $map['reservetime']=array('between',array($time,$timeafter));
+            if (isset($_GET)) {
+            $get=$_GET;
+            foreach($get as$k => $v){
+            if($k == 'status' && $v=='monthly'){
+                $time=date('Y-m-d'). '00:00:00';
+                $time=strtotime($time);
+                $timeafter=date("Y-m-d",strtotime("+1 month")).' 23:59:59';
+                $timeafter=strtotime($timeafter);
+                $map['reservetime']=array('between',array($time,$timeafter));
+                    }else{
+                $time=date('Y-m-d'). '00:00:00';
+                $time=strtotime($time);
+                $timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
+                $timeafter=strtotime($timeafter);
+                $map['reservetime']=array('between',array($time,$timeafter));
+                    }
+                }
+            }
+
+            $data=M('customer')->where($map)->order('reservetime ASC')->select();
+            $count=count($data);
+            $this->assign('data',$data);
+            $this->assign('count',$count);
+            $this->display();
+    }
+
 }
