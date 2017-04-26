@@ -25,7 +25,7 @@ tr,td{
 
 	<div class="main-title">
 
-		<h2>客戶排期表</h2>
+		<h2>客戶排期表(共 {$count} 位客戶排期)</h2>
 
 	</div>
 
@@ -43,13 +43,11 @@ tr,td{
 			<thead>
 
 				<tr>
-
-                    <th>ID</th>
-					<th>标题</th>
-					<th>副标题</th>
-					<th>图片</th>
-					<th>排序</th>
-					<th>狀態</th>
+					<th>排期</th>
+					<th>客戶</th>
+					<th>時間</th>
+					<th>圖片說明</th>
+					<th>備註</th>
 					<th>操作</th>
 
 				</tr>
@@ -62,15 +60,14 @@ tr,td{
 
 					<volist name="data" id="vo">
 					<tr>
-						<td width="3%">{$vo.id}</td>
-						<td width="10%"><a href="{:U('single',array('pid'=>$vo['id']))}">{$vo.name}</a></td>
-						<td width="10%"><a href="{:U('single',array('pid'=>$vo['id']))}">{$vo.describe}</a></td>
-						<td ><a href="{:U('single',array('pid'=>$vo['id']))}"><img width="10%" src="{$vo.image|get_cover='path'}"/></a></td>
-						<td width="10%">{$vo.orderlist}</td>
-						<td width="10%">{$vo.status}</td>
+						<td width="10%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.reservetime|date='Y-m-d',###}</a></td>
+						<td width="10%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.name}</a></td>
+						<td width="10%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.reservetime|date='H:i',###}</a></td>
+						<td>{$vo.explain}</td>
+						<td width="10%">{$vo.other}</td>
 						<td width="10%">
-                        <a title="编辑" href="{:U('editIndex',array('id'=>$vo['id']))}">编辑</a>
-						<a href="{:U('delIndex',array('id'=>$vo['id']))}" class="confirm ajax-get">删除</a>
+                        <a title="编辑" href="{:U('editStatistic',array('id'=>$vo['id']))}">编辑</a>
+						<a href="{:U('delStatistic',array('id'=>$vo['id']))}" class="confirm ajax-get">删除</a>
                         </td>
 
 					</tr>

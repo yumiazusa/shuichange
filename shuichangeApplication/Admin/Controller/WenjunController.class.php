@@ -351,7 +351,9 @@ class WenjunController extends AdminController {
 		   	 	}
 			}
 			$data=M('customer')->where($map)->select();
+			$count=count($data);
 			$this->assign('data',$data);
+			$this->assign('count',$count);
 			$this->display();
 		}
 
