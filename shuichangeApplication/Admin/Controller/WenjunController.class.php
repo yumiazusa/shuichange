@@ -348,7 +348,12 @@ class WenjunController extends AdminController {
 				$timeafter=strtotime($timeafter);
 				$map['reservetime']=array('between',array($time,$timeafter));
 					}
-		   	 	}
+		   	 	}else{
+		   	 	$time=date('Y-m-d'). '00:00:00';
+				$time=strtotime($time);
+				$timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
+				$timeafter=strtotime($timeafter);
+				$map['reservetime']=array('between',array($time,$timeafter));
 			}
 			$data=M('customer')->where($map)->select();
 			$count=count($data);
