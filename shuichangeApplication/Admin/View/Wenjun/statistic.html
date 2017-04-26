@@ -12,7 +12,7 @@
 
 	<div class="main-title">
 
-		<h2>客戶列表</h2>
+		<h2>客戶列表(总客户量：{$total} | 搜索量：{$count})</h2>
 
 	</div>
 
@@ -84,7 +84,7 @@
 
 				<tr>
 
-                    <th>ID</th>
+                   <!--  <th>ID</th> -->
 					<th>客戶</th>
 					<th>電話</th>
 					<th>到店時間</th>
@@ -104,9 +104,9 @@
 
 				<notempty name="data">
 
-					<volist name="data" id="vo">
+					<volist name="data" id="vo" key='k'>
 					<tr>
-						<td width="3%">{$vo.id}</td>
+						<!-- <td width="3%">{$vo.k}</td> -->
 						<td><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.name}</a></td>
 						<td><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.phone}</a></td>
 						<td>
@@ -142,7 +142,7 @@
 
 				<else/>
 
-				<td colspan="11" class="text-center"> aOh! 暂时还没有内容! </td>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
 
 				</notempty>
 

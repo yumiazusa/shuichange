@@ -217,6 +217,7 @@ class WenjunController extends AdminController {
 		}
 		// dump($map);
 		// die;
+        $total=$db->count();
         $getPageCounts = $db->where($map)->count();
         // 每页显示 $pageSize 条数据
         $pageSize = 15;
@@ -235,6 +236,8 @@ class WenjunController extends AdminController {
         $this->assign('page', $pageShow);
 		$this->assign(
 				array('data'=>$data,
+					'count'=>$getPageCounts,
+					'total'=>$total,
 					  )
 					);
 			$this->display();
