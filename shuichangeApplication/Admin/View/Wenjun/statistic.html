@@ -87,7 +87,7 @@
                    <!--  <th>ID</th> -->
 					<th>客戶</th>
 					<th>電話</th>
-					<th>到店時間</th>
+					<!-- <th>到店時間</th> -->
 					<th>說明</th>
 					<th>預定時間</th>
 					<th>定金</th>
@@ -109,11 +109,11 @@
 						<!-- <td width="3%">{$vo.k}</td> -->
 						<td><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.name}</a></td>
 						<td><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.phone}</a></td>
-						<td>
+						<!-- <td>
 							<if condition="$vo['comeintime'] eq 0">
 							<else /> <a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.comeintime|date='Y-m-d H:i',###}</a>
 							</if>
-							</td>
+							</td> -->
 						<td width="15%"><a href="{:U('viewStatistic',array('id'=>$vo['id']))}">{$vo.explain}</a></td>
 						<td>
 							<if condition="$vo['reservetime'] eq 0">
@@ -142,7 +142,7 @@
 
 				<else/>
 
-				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+				<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
 
 				</notempty>
 

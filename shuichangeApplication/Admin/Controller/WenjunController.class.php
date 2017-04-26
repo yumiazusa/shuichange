@@ -258,10 +258,7 @@ class WenjunController extends AdminController {
 			// $data['describe']=I('describe');
 			$data=I('post.');
 
-			if($data['comeintime']){
-				$data['comeintime']=$data['comeintime']. ':00';
-				$data['comeintime']=strtotime($data['comeintime']);
-			}
+			
 			if($data['reservetime']){
 				$data['reservetime']=$data['reservetime']. ':00';
 				$data['reservetime']=strtotime($data['reservetime']);
@@ -285,9 +282,7 @@ class WenjunController extends AdminController {
 		public function editStatistic(){
 			$id=I('get.id');
 			$data=M('customer')->where(array('id'=>$id))->find();
-			if($data['comeintime']){
-				$data['comeintime']=date('Y-m-d H:i',$data['comeintime']);
-			}
+			
 			if($data['reservetime']){
 				$data['reservetime']=date('Y-m-d H:i',$data['reservetime']);
 			}
@@ -300,10 +295,7 @@ class WenjunController extends AdminController {
 
 		public function doEditstatistic(){
 			$data=I('post.');
-			if($data['comeintime']){
-				$data['comeintime']=$data['comeintime']. ':00';
-				$data['comeintime']=strtotime($data['comeintime']);
-			}
+			
 			if($data['reservetime']){
 				$data['reservetime']=$data['reservetime']. ':00';
 				$data['reservetime']=strtotime($data['reservetime']);
