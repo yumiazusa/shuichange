@@ -3,7 +3,20 @@
 <block name="style">
 
 <style>
-
+tr,td{
+	border:1px solid black;
+	height: 40px;
+}
+.data-table thead th, .data-table tbody td {
+     border-bottom-color: black; 
+}
+.data-table thead th, .data-table tbody td {
+    padding: 8px;
+    height: 50px;
+    line-height: 19px;
+    font-weight: 400;
+    text-align: center;
+}
 </style>
 
 </block>
@@ -12,17 +25,18 @@
 
 	<div class="main-title">
 
-		<h2>主頁分類</h2>
+		<h2>客戶排期表</h2>
 
 	</div>
 
 
 
 	<div class="cf">
-		<a class="btn" href="{:U('addIndex')}">添加</a>
+		<a class="btn" href="{:U('schedul',array('status'=>'weekly'))}">一周排期</a>
+		<a class="btn" href="{:U('schedul',array('status'=>'monthly'))}">一月排期</a>
 	</div>
 
-	<div class="data-table table-striped">
+	<div class="data-table table-bordered">
 
 		 <table>
 

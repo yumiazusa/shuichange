@@ -331,6 +331,30 @@ class WenjunController extends AdminController {
 			$this->display('viewStatistic');
 		}
 
+		public function schedul(){
+			if (isset($_GET)) {
+			$get=$_GET;
+			foreach($get as$k => $v){
+			if($k == 'status' && $v=='monthly'){
+				$time=date('Y-m-d'). '00:00:00';
+				$time=strtotime($time);
+				$timeafter=date("Y-m-d",strtotime("+1 month")).' 23:59:59';
+				$timeafter=strtotime($timeafter);
+				$map['reservetime']=array('between',array($time,$timeafter));
+					}else{
+				$time=date('Y-m-d'). '00:00:00';
+				$time=strtotime($time);
+				$timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
+				$timeafter=strtotime($timeafter);
+				$map['reservetime']=array('between',array($time,$timeafter));
+					}
+		   	 	}
+			}
+			$data=M('customer')->where($map)->select();
+			$this->assign('data',$data);
+			$this->display();
+		}
+
 		public function news(){
 			$list=M('newscategory')->order('status ASC')->select();
 			$this->assign('list',$list);
@@ -361,10 +385,6 @@ class WenjunController extends AdminController {
 			$this->display();
 		}
 
-
-		public function schedul(){
-			$this->display();
-		}
 
 		public function editNews(){
 			$list=M('newscategory')->order('status ASC')->select();
