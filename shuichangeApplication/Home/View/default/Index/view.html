@@ -18,8 +18,8 @@ body{
 </head>
 <body>
 <div class="btn-group" role="group" style='margin-bottom: 10px;'>
-  <button type="button" class="btn btn-default" style='margin-right: 5px;'>一周排期</button>
-  <button type="button" class="btn btn-default">一月排期</button>
+  <button type="button" class="btn btn-default" style='margin-right: 5px;'><a class="btn" href="{:U('view',array('status'=>'weekly'))}">一周排期</a></button>
+  <button type="button" class="btn btn-default"><a class="btn" href="{:U('view',array('status'=>'weekly'))}">一月排期</a></button>
 </div>
 <table class="table table-bordered">
       <thead>
@@ -35,8 +35,8 @@ body{
         <tr>
           <th scope="row">{$vo.reservetime|date='Y-m-d',###}</th>
           <td>{$vo.name}</td>
+          <td>{$vo.explain}</td>
           <td>{$vo.reservetime|date='H:i',###}</td>
-          <td>{$vo.other}</td>
         </tr>
       </volist>
       </tbody>
