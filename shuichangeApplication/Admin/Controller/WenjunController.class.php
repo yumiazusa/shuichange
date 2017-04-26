@@ -355,8 +355,8 @@ class WenjunController extends AdminController {
 					}
 		   	 	}
 			}
-			
-			$data=M('customer')->where($map)->select();
+
+			$data=M('customer')->where($map)->order('reservetime ASC')->select();
 			$count=count($data);
 			$this->assign('data',$data);
 			$this->assign('count',$count);
