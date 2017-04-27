@@ -14,6 +14,8 @@ class WeixinController extends HomeController {
 			$wechat = new Wechat($token);
 			$access_token['access_token']=$Token=A('Api')->getAccessToken();
 			$WechatAuth = new WechatAuth($appid, $secret, $access_token['access_token']);
+			dump($Token);
+			die;
 			/* 获取请求信息 */
 			$data = $wechat->request();
 
