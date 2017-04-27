@@ -22,8 +22,9 @@ class WeixinController extends HomeController {
 			if ($data['Event'] == 'subscribe') {
 				$response=C('WEI_REPLAYWORD_SUBSCRIBE');
 			} else if ($data['Event'] == 'unsubscribe') {
-				
-			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_CUSTOMERMESSAGE') {
+				$response="測試";
+			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TEST') {
+
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
