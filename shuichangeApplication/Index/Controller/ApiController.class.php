@@ -28,7 +28,7 @@ class ApiController extends HomeController {
 	 */
 	public function getUserinfo($openid){
 		$access_token = $this->getAccessToken();
-		$info = file_get_contents('https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN');		
+		$info = file_get_contents('https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token['access_token'].'&openid='.$openid.'&lang=zh_CN');		
 		return json_decode($info,true);
 	}
 
