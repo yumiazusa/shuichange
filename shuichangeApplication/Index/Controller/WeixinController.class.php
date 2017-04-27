@@ -27,6 +27,7 @@ class WeixinController extends HomeController {
 				$userinfo = A('Ask/Api')->getUserinfo($data['FromUserName']);
 				// $response=json_encode($data);
 				$response=json_encode($userinfo);
+				$response=$userinfo;
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
