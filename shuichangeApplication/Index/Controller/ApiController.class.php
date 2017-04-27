@@ -23,4 +23,13 @@ class ApiController extends HomeController {
 		return $Token;
 	}
 
+	/**
+	 * 获取微信用户信息
+	 */
+	public function getUserinfo($openid){
+		$access_token = $this->getAccessToken();
+		$info = file_get_contents('https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN');		
+		return json_decode($info,true);
+	}
+
 }

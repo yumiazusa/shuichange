@@ -24,7 +24,9 @@ class WeixinController extends HomeController {
 			} else if ($data['Event'] == 'unsubscribe') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TEST') {
-				$response=json_encode($data);
+				$userinfo = A('Ask/Api')->getUserinfo($data['FromUserName']);
+				// $response=json_encode($data);
+				$response=json_encode($userinfo);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
