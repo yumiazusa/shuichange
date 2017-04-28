@@ -42,7 +42,7 @@ class WeixinController extends HomeController {
 					$save['subscribe'] = 1;
 					$Wx_user_fans->add($save2);
 				}
-				$response=C('WEI_REPLAYWORD_SUBSCRIBE');
+				// $response=C('WEI_REPLAYWORD_SUBSCRIBE');
 
 			} else if ($data['Event'] == 'unsubscribe') {
 				$Wx_user->where(array('openid' => $data['FromUserName']))->setField('subscribe', 0);
