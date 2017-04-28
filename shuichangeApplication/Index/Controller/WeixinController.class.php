@@ -23,11 +23,11 @@ class WeixinController extends HomeController {
 			if ($data['Event'] == 'subscribe') {
 				// $response=json_encode($data);
 				$wx_user_id = $Wx_user->where(array('openid' => $data['FromUserName']))->getField('id');
-				$response=json_encode($wx_user_id);
-				// if($wx_user_id > 0) {
-				// 	$userinfo = A('Api')->getUserinfo($data['FromUserName']);
-				// 	$Wx_user->where(array('openid' => $data['FromUserName']))->save(array('subscribe' => 1, 'nickname' => $userinfo['nickname'], 'headimgurl' => $userinfo['headimgurl']));
-				// }else{
+				if($wx_user_id) {
+					$userinfo = A('Api')->getUserinfo($data['FromUserName']);
+					$Wx_user->where(array('openid' => $data['FromUserName']))->save(array('subscribe' => 1, 'nickname' => $userinfo['nickname'], 'headimgurl' => $userinfo['headimgurl']));
+				}else{
+					$response='11';
 				// 	// $sceneArr = explode('_', $data['EventKey']);
 				// 	// if ($sceneArr[0] == 'qrscene') {
 				// 	// 	$save['scene'] = $sceneArr[2] ? $sceneArr[1] . '_' . $sceneArr[2] : $sceneArr[1]; //场景值  默认0
@@ -44,7 +44,7 @@ class WeixinController extends HomeController {
 				// 	$save['user_id'] = 0;
 				// 	$save['subscribe'] = 1;
 				// 	$Wx_user_fans->add($save2);
-				// }
+				}
 				// $response=C('WEI_REPLAYWORD_SUBSCRIBE');
 
 			} else if ($data['Event'] == 'unsubscribe') {
