@@ -21,29 +21,29 @@ class WeixinController extends HomeController {
 			$access_token['openid'] = $data['FromUserName'];
 
 			if ($data['Event'] == 'subscribe') {
-
-				$wx_user_id = $Wx_user->where(array('openid' => $data['FromUserName']))->getField('id');
-				if ($wx_user_id > 0) {
-					$userinfo = A('Api')->getUserinfo($data['FromUserName']);
-					$Wx_user->where(array('openid' => $data['FromUserName']))->save(array('subscribe' => 1, 'nickname' => $userinfo['nickname'], 'headimgurl' => $userinfo['headimgurl']));
-				}else{
-					// $sceneArr = explode('_', $data['EventKey']);
-					// if ($sceneArr[0] == 'qrscene') {
-					// 	$save['scene'] = $sceneArr[2] ? $sceneArr[1] . '_' . $sceneArr[2] : $sceneArr[1]; //场景值  默认0
-					// }
-					$userinfo = A('Api')->getUserinfo($data['FromUserName']);
-					// $response=json_encode($userinfo);
-					$response=json_encode($data);
-					$save['openid'] = $data['FromUserName'];
-					$save['nickname'] = $userinfo['nickname'];
-					$save['headimgurl'] = $userinfo['headimgurl'];
-					$save['sex'] = $userinfo['sex'];
-					$save['addtime'] = $userinfo['subscribe_time'];
-					$save['status'] = 1;
-					$save['user_id'] = 0;
-					$save['subscribe'] = 1;
-					$Wx_user_fans->add($save2);
-				}
+				$response=json_encode($data);
+				// $wx_user_id = $Wx_user->where(array('openid' => $data['FromUserName']))->getField('id');
+				// if ($wx_user_id > 0) {
+				// 	$userinfo = A('Api')->getUserinfo($data['FromUserName']);
+				// 	$Wx_user->where(array('openid' => $data['FromUserName']))->save(array('subscribe' => 1, 'nickname' => $userinfo['nickname'], 'headimgurl' => $userinfo['headimgurl']));
+				// }else{
+				// 	// $sceneArr = explode('_', $data['EventKey']);
+				// 	// if ($sceneArr[0] == 'qrscene') {
+				// 	// 	$save['scene'] = $sceneArr[2] ? $sceneArr[1] . '_' . $sceneArr[2] : $sceneArr[1]; //场景值  默认0
+				// 	// }
+				// 	$userinfo = A('Api')->getUserinfo($data['FromUserName']);
+				// 	// $response=json_encode($userinfo);
+				// 	$response=json_encode($data);
+				// 	$save['openid'] = $data['FromUserName'];
+				// 	$save['nickname'] = $userinfo['nickname'];
+				// 	$save['headimgurl'] = $userinfo['headimgurl'];
+				// 	$save['sex'] = $userinfo['sex'];
+				// 	$save['addtime'] = $userinfo['subscribe_time'];
+				// 	$save['status'] = 1;
+				// 	$save['user_id'] = 0;
+				// 	$save['subscribe'] = 1;
+				// 	$Wx_user_fans->add($save2);
+				// }
 				// $response=C('WEI_REPLAYWORD_SUBSCRIBE');
 
 			} else if ($data['Event'] == 'unsubscribe') {
