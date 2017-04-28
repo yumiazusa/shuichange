@@ -56,7 +56,7 @@ class WeixinController extends HomeController {
 							$url = 'http://muye.testlala.com';
 							$picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
 							$WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
-				$response=json_encode($userinfo);
+				// $response=json_encode($userinfo);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
