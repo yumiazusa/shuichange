@@ -48,17 +48,17 @@ class WeixinController extends HomeController {
 			} else if ($data['Event'] == 'unsubscribe') {
 				$Wx_user->where(array('openid' => $data['FromUserName']))->setField('subscribe', 0);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TEST') {
-				$userinfo = A('Api')->getUserinfo($data['FromUserName']);
-				$MsgType = "text";
-				$Content = 'lala';
-				$WechatAuth->sendText($data['FromUserName'], $Content);
+				// $userinfo = A('Api')->getUserinfo($data['FromUserName']);
+				// $MsgType = "text";
+				// $Content = 'lala';
+				// $WechatAuth->sendText($data['FromUserName'], $Content);
 				// $openid = $data['FromUserName'];
 				// $title = '文君首頁';
 				// $discription = '文君官方';
 			 //    $url = 'http://muye.testlala.com';
 				// $picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
-				// $response=json_encode($userinfo);
+				$response=json_encode($WechatAuth);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 				
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
