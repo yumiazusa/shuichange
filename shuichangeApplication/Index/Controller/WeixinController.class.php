@@ -23,7 +23,7 @@ class WeixinController extends HomeController {
 			if ($data['Event'] == 'subscribe') {
 				// $response=json_encode($data);
 				$wx_user_id = $Wx_user->where(array('openid' => $data['FromUserName']))->getField('id');
-				if(!$wx_user_id) {
+				if($wx_user_id) {
 					$response='10';
 					$userinfo = A('Api')->getUserinfo($data['FromUserName']);
 					$Wx_user->where(array('openid' => $data['FromUserName']))->save(array('subscribe' => 1, 'nickname' => $userinfo['nickname'], 'headimgurl' => $userinfo['headimgurl']));
