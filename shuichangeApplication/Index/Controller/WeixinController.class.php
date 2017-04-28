@@ -49,9 +49,9 @@ class WeixinController extends HomeController {
 				$Wx_user->where(array('openid' => $data['FromUserName']))->setField('subscribe', 0);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TEST') {
 				// $userinfo = A('Api')->getUserinfo($data['FromUserName']);
-				// $MsgType = "text";
-				// $Content = 'lala';
-				// $WechatAuth->sendText($data['FromUserName'], $Content);
+				$MsgType = "text";
+				$Content = 'lala';
+				$WechatAuth->sendText($data['FromUserName'], $Content);
 				// $openid = $data['FromUserName'];
 				// $title = '文君首頁';
 				// $discription = '文君官方';
