@@ -31,6 +31,7 @@ class WeixinController extends HomeController {
 						$save['scene'] = $sceneArr[2] ? $sceneArr[1] . '_' . $sceneArr[2] : $sceneArr[1]; //场景值  默认0
 					}
 					$userinfo = A('Api')->getUserinfo($data['FromUserName']);
+					$response=json_encode($userinfo);
 					$save['openid'] = $data['FromUserName'];
 					$save['nickname'] = $userinfo['nickname'];
 					$save['headimgurl'] = $userinfo['headimgurl'];
