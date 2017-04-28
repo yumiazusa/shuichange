@@ -69,11 +69,17 @@ class WeixinController extends HomeController {
 			
 			}else if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
 				if ($data['Content'] == '排期') {
-					$title = '客戶排期';
-					$discription = '客戶排期表';
-			    	$url = 'http://muye.testlala.com/index.php/Home/Index/view.html';
-					$picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
-					$wechat->replyNewsOnce($title, $discription, $url, $picurl);
+					$manager=C('WEIXIN_MANAGER');
+					$response=json_encode($manager);
+					// if(){
+
+					// }
+
+					// $title = '客戶排期';
+					// $discription = '客戶排期表';
+			  //   	$url = 'http://muye.testlala.com/index.php/Home/Index/view.html';
+					// $picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
+					// $wechat->replyNewsOnce($title, $discription, $url, $picurl);
 				}
 				// if(C('WEI_REPLAY_SWITCH')){
 				// 	$response=C('WEI_REPLAYWORD');
