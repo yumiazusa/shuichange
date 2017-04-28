@@ -52,7 +52,7 @@ class WeixinController extends HomeController {
 				$MsgType = "text";
 				$Content = 'lala';
 				$WechatAuth->sendText($data['FromUserName'], $Content);
-				$response=$secret;
+				$response=json_encode($access_token);
 				// $openid = $data['FromUserName'];
 				// $title = '文君首頁';
 				// $discription = '文君官方';
