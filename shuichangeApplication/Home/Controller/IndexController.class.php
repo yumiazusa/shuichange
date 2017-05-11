@@ -40,7 +40,7 @@ class IndexController extends HomeController {
     public function view(){
         $time=date('Y-m-d'). '00:00:00';
             $time=strtotime($time);
-            $timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
+            $timeafter=date("Y-m-d",strtotime("+1 month")).' 23:59:59';
             $timeafter=strtotime($timeafter);
             $map['reservetime']=array('between',array($time,$timeafter));
             if (isset($_GET)) {
@@ -55,7 +55,7 @@ class IndexController extends HomeController {
                     }else{
                 $time=date('Y-m-d'). '00:00:00';
                 $time=strtotime($time);
-                $timeafter=date("Y-m-d",strtotime("+1 month")).' 23:59:59';
+                $timeafter=date("Y-m-d",strtotime("+1 week")).' 23:59:59';
                 $timeafter=strtotime($timeafter);
                 $map['reservetime']=array('between',array($time,$timeafter));
                     }
