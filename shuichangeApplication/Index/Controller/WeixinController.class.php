@@ -51,7 +51,7 @@ class WeixinController extends HomeController {
 				// $userinfo = A('Api')->getUserinfo($data['FromUserName']);
 				// $MsgType = "text";
 				// $WechatAuth->sendText($data['FromUserName'], $Content);
-				
+
 				// $openid = $data['FromUserName'];
 				$title = '文君首頁';
 				$discription = '文君官方';
@@ -62,11 +62,11 @@ class WeixinController extends HomeController {
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
 				// $response=json_encode($WechatAuth);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
-				
+
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
-				
+
 			} else if ($data['Event'] == 'SCAN') {
-			
+
 			}else if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
 				if ($data['Content'] == '排期') {
 					$manager=C('WEIXIN_MANAGER');
