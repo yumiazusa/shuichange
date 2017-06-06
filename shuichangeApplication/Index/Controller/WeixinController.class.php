@@ -55,8 +55,8 @@ class WeixinController extends HomeController {
 				// $openid = $data['FromUserName'];
 				$title = '文君首頁';
 				$discription = '文君官方';
-			    $url = 'http://muye.testlala.com';
-				$picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
+			    $url = 'http://www.tattoowenjun.com';
+				$picurl = 'http://www.tattoowenjun.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
 				$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
@@ -73,8 +73,8 @@ class WeixinController extends HomeController {
 					if(in_array($data['FromUserName'],$manager)){
 						$title = '客戶排期';
 						$discription = '客戶排期表';
-			    		$url = 'http://muye.testlala.com/index.php/Home/Index/view.html';
-						$picurl = 'http://muye.testlala.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
+			    		$url = 'http://www.tattoowenjun.com/index.php/Home/Index/view.html';
+						$picurl = 'http://www.tattoowenjun.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
 						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 					}
 
