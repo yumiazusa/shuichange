@@ -55,7 +55,7 @@ class WeixinController extends HomeController {
 				// $openid = $data['FromUserName'];
 				$title = '文君首頁';
 				$discription = '文君官方';
-			    $url = 'http://www.tattoowenjun.com';
+			    $url = 'http://www.tattoowenjun.com/index.php/home/index/main.html';
 				$picurl = 'http://www.tattoowenjun.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
 				$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 
