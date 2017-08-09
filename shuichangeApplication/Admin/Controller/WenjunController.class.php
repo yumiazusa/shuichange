@@ -658,11 +658,11 @@ class WenjunController extends AdminController {
             $pageShow = $page->show();
         	$this->assign('page', $pageShow);
 			$this->assign('data',$data);
-    		$this->display();
+    		$this->display('Video');
     	}
 
     	public function addVideo(){
-    		$this->display();
+    		$this->display('addVideo');
     	}
 
     	public function doAddvideo(){
