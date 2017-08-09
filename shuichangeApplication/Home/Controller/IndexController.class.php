@@ -16,8 +16,19 @@ use OT\DataDictionary;
  */
 class IndexController extends HomeController {
 
+    function __construct(){ //构造方法 
+    parent::__construct();
+    }
+
 	//首页
     public function index(){
+        $mobile = parent::isMobile(); //实例化该方法 
+        if($mobile=="true"){
+            dump(1);die;
+        }else{
+            dump(2);die;
+        }
+
         $db=M('video');
         $data=$db->order('rand()')->limit(1)->find();
         $this->assign('data',$data);
