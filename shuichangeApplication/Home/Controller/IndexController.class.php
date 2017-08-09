@@ -24,15 +24,17 @@ class IndexController extends HomeController {
     public function index(){
         $mobile = parent::isMobile(); //实例化该方法 
         if($mobile=="true"){
-            dump(1);die;
+           $db=M('muyeindex');
+            $data=$db->order('orderlist DESC')->select();
+            $this->assign('data',$data);
+            $this->display('main');
         }else{
-            dump(2);die;
+            $db=M('video');
+            $data=$db->order('rand()')->limit(1)->find();
+            $this->assign('data',$data);
+            $this->display();
         }
 
-        $db=M('video');
-        $data=$db->order('rand()')->limit(1)->find();
-        $this->assign('data',$data);
-        $this->display();
     }
 
     //單頁
