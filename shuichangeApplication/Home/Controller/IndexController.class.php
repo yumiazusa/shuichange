@@ -35,7 +35,7 @@ class IndexController extends HomeController {
 
     public function main(){
         $db=M('muyeindex');
-        $data=$db->order('orderlist ASC')->select();
+        $data=$db->order('orderlist DESC')->select();
         $this->assign('data',$data);
         $this->display('main');
     }
