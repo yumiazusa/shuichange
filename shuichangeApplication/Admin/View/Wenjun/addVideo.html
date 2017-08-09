@@ -1,0 +1,31 @@
+<extend name="Public/base" />
+
+<block name="body">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<div class="form-item cf" >
+	<div class="main-title cf">
+		<h2>添加视频</h2>
+	</div>
+	<form action="{:U('doAddvideo')}" method="post" class="form-horizontal" id="form" enctype="multipart/form-data">
+			<div class="controls">
+				视频标题<input type="text" style="width:300px; margin-left:45px;"class="text input-large" name="title" value="">
+			</div>
+		    </br>
+			<div class="controls">
+				<input type="file" name="video"  margin-left="45px;"/>
+			</div>
+			<div class="form-item">
+			</br></br>
+			<button type="submit" class="btn submit-btn" target-form="form-horizontal">确 定</button>	
+			<button style="margin-left:30px;"class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		    </div>
+		    </form>
+		</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('index')}');
+</script>
+</block>
+

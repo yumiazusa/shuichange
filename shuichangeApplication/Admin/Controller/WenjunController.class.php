@@ -9,7 +9,13 @@ class WenjunController extends AdminController {
 
 		public function index(){
 			$db=M('muyeindex');
-			$data=$db->order('orderlist ASC')->select();
+			$getPageCounts = $db->count();
+        	$pageSize = 10;
+        	$page = new \Think\Page($getPageCounts, $pageSize, $where);
+        	$data = $db->order('orderlist ASC')->limit($page->firstRow, $page->listRows)
+                       ->select();
+            $pageShow = $page->show();
+        	$this->assign('page', $pageShow);
 			$this->assign('data',$data);
 			$this->display();
 		}
@@ -67,7 +73,13 @@ class WenjunController extends AdminController {
 			$data=array();
 			$data['pid']=$pid=I('get.pid');
 			$db=M('muyesingle');
-			$data=$db->where(array('pid'=>$pid))->order('orderlist ASC')->select();
+			$getPageCounts = $db->count();
+        	$pageSize = 10;
+        	$page = new \Think\Page($getPageCounts, $pageSize, $where);
+        	$data = $db->where(array('pid'=>$pid))->order('orderlist ASC')->limit($page->firstRow, $page->listRows)
+                       ->select();
+            $pageShow = $page->show();
+        	$this->assign('page', $pageShow);
 			$this->assign(
 				array('data'=>$data,
 					  'pid'=>$pid)
@@ -632,10 +644,69 @@ class WenjunController extends AdminController {
 
 
     	public function replayWords(){
-    		
     	}
 
+    	public function Video(){
+    		$db=M('video');
 
+			$getPageCounts = $db->count();
+        	$pageSize = 5;
+        	$page = new \Think\Page($getPageCounts, $pageSize, $where);
+        	$data = $db->order('id ASC')->limit($page->firstRow, $page->listRows)
+                       ->select();
+
+            $pageShow = $page->show();
+        	$this->assign('page', $pageShow);
+			$this->assign('data',$data);
+    		$this->display();
+    	}
+
+    	public function addVideo(){
+    		$this->display();
+    	}
+
+    	public function doAddvideo(){
+    		$data=I('post.');
+    		$upload = new \Think\Upload();// 实例化上传类
+    		$upload->maxSize   =     31457280 ;// 设置附件上传大小
+    		$upload->exts      =     array('mp4');// 设置附件上传类型
+    		$upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+    		$upload->savePath  =     '/Weixin/indexvideo/'; // 设置附件上传（子）目录
+    // 上传文件 
+    		$info   =   $upload->upload();
+    		if(!$info) {// 上传错误提示错误信息
+        	$this->error($upload->getError());
+    		}else{// 上传成功
+    		$data['title']=I('post.title');
+			$data['path']=$info['video']['savepath'].$info['video']['savename'];
+			$data['size']=$info['video']['size'];
+			$db=M('video');
+			$res= $db->add($data);
+			if($res !== false){
+	          $this->success('上传成功！',U('video'),3);
+	        }else{
+	          $this->error('提交失败');
+	        }
+    }
+    	}
+
+    	public function delVideo(){
+    		$id=I('get.id');
+    		$db=M('video');
+    		$path=$db->where(array('id'=>$id))->find();
+    		$file = './Uploads'.$path['path'];
+			$result = @unlink ($file); 
+			if ($result == false) { 
+				 $this->error('删除失败',U('video'),2);
+			} else {
+				$res=$db->where(array('id'=>$id))->delete();
+			if($res !== false){
+	          $this->success('提交成功',U('video'),2);
+	        }else{
+	          $this->success('提交失败',U('video'),2);
+	         }
+			}
+    	}
 
 
 		private function httpsPost($url, $data = null) {

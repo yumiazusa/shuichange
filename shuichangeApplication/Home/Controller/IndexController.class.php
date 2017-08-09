@@ -18,8 +18,8 @@ class IndexController extends HomeController {
 
 	//首页
     public function index(){
-        $db=M('muyeindex');
-        $data=$db->order('orderlist ASC')->select();
+        $db=M('video');
+        $data=$db->order('rand()')->limit(1)->find();
         $this->assign('data',$data);
         $this->display();
     }
@@ -34,6 +34,9 @@ class IndexController extends HomeController {
     }
 
     public function main(){
+        $db=M('muyeindex');
+        $data=$db->order('orderlist ASC')->select();
+        $this->assign('data',$data);
         $this->display('main');
     }
 

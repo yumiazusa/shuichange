@@ -57,6 +57,7 @@ return array(
 
     /* 模板相关配置 */
     'TMPL_PARSE_STRING' => array(
+        '__UPLOADS__' => __ROOT__ . '/Uploads',
         '__STATIC__' => __ROOT__ . '/Public/static',
         '__ADDONS__' => __ROOT__ . '/Public/' . MODULE_NAME . '/Addons',
         '__IMG__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/images',

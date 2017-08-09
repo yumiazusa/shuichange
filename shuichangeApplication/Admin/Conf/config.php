@@ -20,7 +20,7 @@ return array(
     'DOWNLOAD_UPLOAD' => array(
         'mimes'    => '', //允许上传的文件MiMe类型
         'maxSize'  => 5*1024*1024, //上传的文件大小限制 (0-不做限制)
-        'exts'     => 'jpg,gif,png,jpeg,zip,rar,tar,gz,7z,doc,docx,txt,xml', //允许上传的文件后缀
+        'exts'     => 'jpg,gif,png,jpeg,zip,rar,tar,gz,7z,doc,docx,txt,xml,mp4', //允许上传的文件后缀
         'autoSub'  => true, //自动子目录保存文件
         'subName'  => array('date', 'Y-m-d'), //子目录创建方式，[0]-函数名，[1]-参数，多个参数使用数组
         'rootPath' => './Uploads/Download/', //保存根路径
@@ -84,6 +84,7 @@ return array(
 
     /* 模板相关配置 */
     'TMPL_PARSE_STRING' => array(
+        '__UPLOADS__'=> __ROOT__ . '/Uploads',
         '__STATIC__' => __ROOT__ . '/Public/static',
         '__ADDONS__' => __ROOT__ . '/Public/' . MODULE_NAME . '/Addons',
         '__IMG__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/images',
