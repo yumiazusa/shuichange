@@ -658,7 +658,7 @@ class WenjunController extends AdminController {
             $pageShow = $page->show();
         	$this->assign('page', $pageShow);
 			$this->assign('data',$data);
-    		$this->display('Video');
+    		$this->display('video');
     	}
 
     	public function addVideo(){
