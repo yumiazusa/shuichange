@@ -60,7 +60,7 @@ class WeixinController extends HomeController {
 				$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
-				// $response=json_encode($WechatAuth);
+				$response=json_encode($WechatAuth);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
 
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
