@@ -83,7 +83,7 @@ class WeixinController extends HomeController {
 				}else if($data['MsgType'] == 'image'){
 					
 					// $wechat->replyImage($data['MediaId']);
-					$content='lala';
+					$response=$appid;
 					$WechatAuth->sendText($data['FromUserName'], $content);
 					// $response=json_encode($data);
 				}
