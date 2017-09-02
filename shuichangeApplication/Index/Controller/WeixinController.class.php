@@ -74,7 +74,7 @@ class WeixinController extends HomeController {
 						$title = '客戶排期';
 						$discription = '客戶排期表';
 			    		$url = 'http://www.tattoowenjun.com/index.php/Home/Index/view.html';
-						$picurl = 'http://www.tattoowenjun.com/Uploads/Picture/2017-04-19/58f73fe0eae57.jpg';
+						$picurl = 'http://www.tattoowenjun.com/Uploads/Picture/2017-08-09/598aec27ba97d.jpg';
 						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 					}
 

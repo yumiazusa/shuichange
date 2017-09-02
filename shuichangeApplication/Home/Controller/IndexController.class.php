@@ -22,7 +22,7 @@ class IndexController extends HomeController {
 
 	//首页
     public function index(){
-        $mobile = parent::isMobile(); //实例化该方法 
+        $mobile = parent::isMobile();
         if($mobile=="true"){
            $db=M('muyeindex');
             $data=$db->order('orderlist DESC')->select();
