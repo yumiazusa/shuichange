@@ -13,7 +13,7 @@ class WeixinController extends HomeController {
 			/* 加载微信SDK */
 			$wechat = new Wechat($token);
 			$access_token['access_token']=$Token=A('Api')->getAccessToken();
-			$WechatAuth = new WechatAuth($appid, $secret, $access_token['access_token']);
+			$WechatAuth = new WechatAuth($appid,$secret);
 			/* 获取请求信息 */
 			$data = $wechat->request();
 			$Wx_user = M('wx_user');
@@ -84,6 +84,7 @@ class WeixinController extends HomeController {
 					
 					// $wechat->replyImage($data['MediaId']);
 					$response=$appid;
+					$content='lalala';
 					$WechatAuth->sendText($data['FromUserName'], $content);
 					// $response=json_encode($data);
 				}
