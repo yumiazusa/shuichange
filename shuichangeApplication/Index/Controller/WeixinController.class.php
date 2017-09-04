@@ -60,7 +60,8 @@ class WeixinController extends HomeController {
 				$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
-			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TAKEMEDICAL') {
+			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_BOSS') {
+				
 
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
 
@@ -83,9 +84,9 @@ class WeixinController extends HomeController {
 				}else if($data['MsgType'] == 'image'){
 					
 					// $wechat->replyImage($data['MediaId']);
-					$response=$appid;
-					$content='lalala';
-					$WechatAuth->sendText($data['FromUserName'], $content);
+					$response=$secret;
+					// $content='lalala';
+					// $WechatAuth->sendText($data['FromUserName'], $content);
 					// $response=json_encode($data);
 				}
 				// if(C('WEI_REPLAY_SWITCH')){
