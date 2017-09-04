@@ -13,7 +13,7 @@ class WeixinController extends HomeController {
 			/* 加载微信SDK */
 			$wechat = new Wechat($token);
 			$access_token['access_token']=$Token=A('Api')->getAccessToken();
-			$WechatAuth = new WechatAuth(C('WEI_APPID'), C('WEI_SECRET'), $access_token['access_token']);
+			$WechatAuth = new WechatAuth(C('WEI_APPID'), C('WEI_SECRET'));
 			/* 获取请求信息 */
 			$data = $wechat->request();
 			$Wx_user = M('wx_user');
