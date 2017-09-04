@@ -61,6 +61,7 @@ class WeixinController extends HomeController {
 
 				// $WechatAuth->sendNewsOnce($openid, $title, $discription, $url, $picurl);
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_BOSS') {
+				$response='文君·昆明客服：王老师 微信号，咨询请添加~';
 				$WechatAuth->sendImage($data['FromUserName'],'2b5gmoi9AraTBBixGOu_aXFjNa_5a1FAWGy3wfDRDZw');
 
 			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
