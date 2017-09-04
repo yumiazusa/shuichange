@@ -82,14 +82,14 @@ class WeixinController extends HomeController {
 				}else if($data['Content'] == '测试'){
 					$response=json_encode($data);
 				}else if($data['MsgType'] == 'image'){
-					$filename=$this->lala();
-					$a=$WechatAuth->materialUpload($filename,'image');
+					// $filename=$this->lala();
+					// $a=$WechatAuth->materialUpload($filename,'image');
 					// $wechat->replyImage($data['MediaId']);
 					// $response=$secret;
 					// $content='lalala';
 					// $a=$WechatAuth->sendText($data['FromUserName'], $content);
-
-					$response=json_encode($a);
+					$WechatAuth->sendImage($data['FromUserName'],'2b5gmoi9AraTBBixGOu_aXFjNa_5a1FAWGy3wfDRDZw');
+					// $response=json_encode($a);
 				}
 				// if(C('WEI_REPLAY_SWITCH')){
 				// 	$response=C('WEI_REPLAYWORD');
