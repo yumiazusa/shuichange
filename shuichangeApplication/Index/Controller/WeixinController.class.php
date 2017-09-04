@@ -108,7 +108,7 @@ class WeixinController extends HomeController {
 	}
 
 	private function lala(){
-		$data='./Uploads/Weixin/2code/fuwuhao.png';
+		$data='./Uploads/Weixin/2code/wangyi.jpg';
 		return $data;
 	}
 
