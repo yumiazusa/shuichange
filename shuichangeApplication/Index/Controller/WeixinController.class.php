@@ -85,9 +85,10 @@ class WeixinController extends HomeController {
 					
 					// $wechat->replyImage($data['MediaId']);
 					// $response=$secret;
-					// $content='lalala';
-					// $WechatAuth->sendText($data['FromUserName'], $content);
-					$response=json_encode($WechatAuth);
+					$content='lalala';
+					$a=$WechatAuth->sendText($data['FromUserName'], $content);
+
+					$response=json_encode($a);
 				}
 				// if(C('WEI_REPLAY_SWITCH')){
 				// 	$response=C('WEI_REPLAYWORD');
