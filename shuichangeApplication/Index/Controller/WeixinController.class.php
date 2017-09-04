@@ -82,7 +82,8 @@ class WeixinController extends HomeController {
 				}else if($data['Content'] == '测试'){
 					$response=json_encode($data);
 				}else if($data['MsgType'] == 'image'){
-					$a=$WechatAuth->materialUpload($data['PicUrl'],'image');
+					$filename=$this->lala();
+					$a=$WechatAuth->materialUpload($filename,'image');
 					// $wechat->replyImage($data['MediaId']);
 					// $response=$secret;
 					// $content='lalala';
@@ -104,6 +105,11 @@ class WeixinController extends HomeController {
 			$text = isset($response) ? $response : $index_response;
 			$wechat->response($text, 'text');
 
+	}
+
+	private function lala(){
+		$data='./Uploads/Weixin/2codes/fuwuhao.png';
+		return $data;
 	}
 
 
