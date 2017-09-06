@@ -64,8 +64,24 @@ class WeixinController extends HomeController {
 				$response='文君·昆明客服：王老师 微信号，咨询请添加~';
 				$WechatAuth->sendImage($data['FromUserName'],'2b5gmoi9AraTBBixGOu_aXFjNa_5a1FAWGy3wfDRDZw');
 
-			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_POSTERCREATE') {
-
+			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_INFORMATION') {
+						$title = '彩云南：文君刺青·昆明 店面如是';
+						$discription = '文君刺青·昆明，身纹精神，纹你满背满身';
+			    		$url = 'http://mp.weixin.qq.com/s/HVAwlrkOiEQ3yx9O4e7j5Q';
+						$picurl = 'http://www.tattoowenjun.com/Uploads/Weixin/data/a.jpg';
+						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
+			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_TATTOR') {
+						$title = '彩云南：文君刺青·昆明 刺客如是';
+						$discription = '文君刺青·昆明，身纹精神，七分线三分雾';
+			    		$url = 'http://mp.weixin.qq.com/s/IbSE1_NNQq0k_8aTd8ILUA';
+						$picurl = 'http://www.tattoowenjun.com/Uploads/Weixin/data/b.jpg';
+						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
+			} else if ($data['Event'] == 'CLICK' && $data['EventKey'] == 'MENU_KEY_ADDRESS') {
+						$title = '彩云南：文君刺青·昆明 店面导航';
+						$discription = '文君刺青·昆明，葡萄街区 天宇花园A栋 1104';
+			    		$url = 'http://mp.weixin.qq.com/s/leVOsyPNuW5iLCOtK59AoQ';
+						$picurl = 'http://www.tattoowenjun.com/Uploads/Weixin/data/c.jpg';
+						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 			} else if ($data['Event'] == 'SCAN') {
 
 			}else if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
