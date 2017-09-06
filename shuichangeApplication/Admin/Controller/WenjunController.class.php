@@ -73,7 +73,7 @@ class WenjunController extends AdminController {
 			$data=array();
 			$data['pid']=$pid=I('get.pid');
 			$db=M('muyesingle');
-			$getPageCounts = $db->count();
+			$getPageCounts = $db->where(array('pid'=>$pid))->count();
         	$pageSize = 10;
         	$page = new \Think\Page($getPageCounts, $pageSize, $where);
         	$data = $db->where(array('pid'=>$pid))->order('orderlist ASC')->limit($page->firstRow, $page->listRows)
