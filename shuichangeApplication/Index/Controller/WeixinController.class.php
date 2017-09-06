@@ -89,7 +89,7 @@ class WeixinController extends HomeController {
 				$keyword='%'.trim($data['Content']).'%';
 				$map['name'] =array('like',$keyword);
 				$map['discribe']=array('like',$keyword);
-				$response_id = $Custom_reply->where($map)->getField('id','name','describe','image');
+				$response_id = $Custom_reply->where($map)->find();
 				if($response_id){
 						$response=json_encode($response_id);
 				}
