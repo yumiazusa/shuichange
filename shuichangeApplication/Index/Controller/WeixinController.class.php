@@ -89,9 +89,9 @@ class WeixinController extends HomeController {
 				$keyword='%'.trim($data['Content']).'%';
 				$map['name'] =array('like',$keyword);
 				$map['discribe']=array('like',$keyword);
-				$response_id = $Custom_reply->where($map)->getField('id');
+				$response_id = $Custom_reply->where($map)->getField('id','name','describe','image');
 				if($response_id){
-					$response=$response_id;
+						$response=json_encode($response_id);
 				}
 				else if ($data['Content'] == '排期') {
 					$manager=C('WEIXIN_MANAGER');
