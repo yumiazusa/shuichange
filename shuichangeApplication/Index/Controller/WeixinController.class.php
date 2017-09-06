@@ -94,9 +94,10 @@ class WeixinController extends HomeController {
 						$title = '文君刺青·昆明图库:'.$response_id['name'];
 						$discription = '文君图库：如若显示不全请手动刷新';
 			    		$url = 'http://www.tattoowenjun.com/index.php/home/index/single/pid/'.$response_id['id'].'html';
-						$picurl = get_cover($response_id['image']);
-						// $wechat->replyNewsOnce($title, $discription, $url, $picurl);
-						$response=json_encode($picurl);
+						$purl = get_cover($response_id['image']);
+						$picurl='http://www.tattoowenjun.com'.$purl['path'];
+						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
+						// $response=json_encode($picurl);
 				}
 				else if ($data['Content'] == '排期') {
 					$manager=C('WEIXIN_MANAGER');
