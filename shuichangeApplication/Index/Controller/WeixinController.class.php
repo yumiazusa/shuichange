@@ -91,7 +91,11 @@ class WeixinController extends HomeController {
 				$map['discribe']=array('like',$keyword);
 				$response_id = $Custom_reply->where($map)->find();
 				if($response_id){
-						$response=json_encode($response_id);
+						$title = '文君刺青·昆明 图库';
+						$discription = '文君图库：关于'.$response_id['name'].'的些许图片';
+			    		$url = 'http://www.tattoowenjun.com/index.php/home/index/single/pid/'.$response_id['id'].'html';
+						$picurl = get_cover($response_id['image']);
+						$wechat->replyNewsOnce($title, $discription, $url, $picurl);
 				}
 				else if ($data['Content'] == '排期') {
 					$manager=C('WEIXIN_MANAGER');
