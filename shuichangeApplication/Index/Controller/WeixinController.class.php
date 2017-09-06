@@ -85,7 +85,15 @@ class WeixinController extends HomeController {
 			} else if ($data['Event'] == 'SCAN') {
 
 			}else if ($data && is_array($data) && $data['Event'] != 'LOCATION') {
-				if ($data['Content'] == '排期') {
+				$Custom_reply= M('muyeindex');
+				$keyword='%'.trim($data['Content']).'%';
+				$map['name'] =array('like',$keyword);
+				$map['discribe']=array('like',$keyword);
+				$response_id = $Custom_reply->where($map)->getField('id');
+				if($response_id){
+					$response=$response_id;
+				}
+				else if ($data['Content'] == '排期') {
 					$manager=C('WEIXIN_MANAGER');
 					if(in_array($data['FromUserName'],$manager)){
 						$title = '客戶排期';
