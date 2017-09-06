@@ -52,7 +52,7 @@ class WenjunController extends AdminController {
 			$db=M('muyeindex');
 			$res=$db->where(array('id'=>$data['id']))->save($data);
 	        if($res !== false){
-	          $this->success('提交成功',U('index'),3);
+	          $this->success('提交成功','javascript:history.back(-1);',3);
 	        }else{
 	          $this->success('提交失败');
 	        }
