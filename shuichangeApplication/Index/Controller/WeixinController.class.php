@@ -110,10 +110,10 @@ class WeixinController extends HomeController {
 					}
 
 
-				}else if($data['Content'] == '测试'){
+				}else if($data['Content'] == 'test'){
 					$manager=C('WEIXIN_MANAGER');
 					if(in_array($data['FromUserName'],$manager)){
-						$filename=$this->lala();
+					$filename=$this->lala();
 					$a=$WechatAuth->materialUpload($filename,'image');
 					$wechat->replyImage($data['MediaId']);
 					// $content='lalala';
