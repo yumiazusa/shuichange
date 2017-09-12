@@ -115,7 +115,7 @@ class WeixinController extends HomeController {
 					if(in_array($data['FromUserName'],$manager)){
 					$filename=$this->lala();
 					$a=$WechatAuth->materialUpload($filename,'image');
-					$wechat->replyImage($data['MediaId']);
+					// $wechat->replyImage($data['MediaId']);
 					// $content='lalala';
 					// $a=$WechatAuth->sendText($data['FromUserName'], $content);
 					
