@@ -113,8 +113,8 @@ class WeixinController extends HomeController {
 				}else if($data['Content'] == 'test'){
 					$manager=C('WEIXIN_MANAGER');
 					if(in_array($data['FromUserName'],$manager)){
-					$filename=$this->lala();
-					$a=$WechatAuth->materialUpload($filename,'image');
+					// $filename=$this->lala();
+					// $a=$WechatAuth->materialUpload($filename,'image');
 					// $wechat->replyImage($data['MediaId']);
 					// $content='lalala';
 					// $a=$WechatAuth->sendText($data['FromUserName'], $content);
@@ -138,6 +138,10 @@ class WeixinController extends HomeController {
 			$index_response = $test_str;
 			$text = isset($response) ? $response : $index_response;
 			$wechat->response($text, 'text');
+			$promotion=C('WEI_PROMOTION');
+			if($promotion){
+				$WechatAuth->sendImage($data['FromUserName'],'2b5gmoi9AraTBBixGOu_aW6iI3TKyqzFOG8_SPlfD1o');
+			}
 
 	}
 
