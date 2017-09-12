@@ -113,16 +113,17 @@ class WeixinController extends HomeController {
 				}else if($data['Content'] == '测试'){
 					$manager=C('WEIXIN_MANAGER');
 					if(in_array($data['FromUserName'],$manager)){
-						$response=json_encode($data);
-					}
-				}else if($data['MsgType'] == 'image'){
-					$filename=$this->lala();
+						$filename=$this->lala();
 					$a=$WechatAuth->materialUpload($filename,'image');
 					$wechat->replyImage($data['MediaId']);
 					// $content='lalala';
 					// $a=$WechatAuth->sendText($data['FromUserName'], $content);
 					
 					$response=json_encode($a);
+						// $response=json_encode($data);
+					}
+				}else if($data['MsgType'] == 'image'){
+					
 				}
 				// if(C('WEI_REPLAY_SWITCH')){
 				// 	$response=C('WEI_REPLAYWORD');
