@@ -137,11 +137,12 @@ class WeixinController extends HomeController {
 			$test_str = C('WEI_REPLAYWORD_SUBSCRIBE');
 			$index_response = $test_str;
 			$text = isset($response) ? $response : $index_response;
-			$wechat->response($text, 'text');
 			$promotion=C('WEI_PROMOTION');
 			if($promotion){
 				$WechatAuth->sendImage($data['FromUserName'],'2b5gmoi9AraTBBixGOu_aW6iI3TKyqzFOG8_SPlfD1o');
 			}
+			$wechat->response($text, 'text');
+			
 
 	}
 
